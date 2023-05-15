@@ -1,0 +1,21 @@
+<h1>Employee Tracking</h1>
+
+<agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false">
+
+  <agm-marker 
+      *ngFor="let m of markers; let i = index"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="'Testing'"
+      [markerDraggable]="m.draggable">
+    
+  </agm-marker>
+  
+  
+
+</agm-map>

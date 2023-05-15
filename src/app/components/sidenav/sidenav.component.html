@@ -1,0 +1,58 @@
+<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
+    <div class="header">
+        <h1 class="title">
+            TrakAgile
+        </h1>
+        <div class="toggle" (click)="handleSidebarToggle()">
+            <span class="chevron"></span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="link">
+            <div class="content" [routerLink]="['/home']" [routerLinkActive]="'active'">
+                <div class="icon">
+                    <i class="fa-thin fa-house"></i>
+                </div>
+                <div class="title">
+                    Home
+                </div>
+            </div>
+            <div class="content" [routerLink]="['/sites']" [routerLinkActive]="'active'">
+                <div class="icon">
+                </div>
+                <div class="title">
+                    Sites
+                </div>
+            </div>
+            <div class="content" [routerLink]="['/requests']" [routerLinkActive]="'active'">
+                <div class="icon">
+                </div>
+                <div class="title">
+                    Requests
+                </div>
+            </div>
+            <div class="content" [routerLink]="['/employee-tracking']" [routerLinkActive]="'active'">
+                <div class="icon">
+                </div>
+                <div class="title">
+                    Employee Tracking
+                </div>
+            </div>
+            <div class="content" [routerLink]="['/employee-registration']" [routerLinkActive]="'active'">
+                <div class="icon">
+                </div>
+                <div class="title">
+                    Employee Registration
+                </div>
+            </div>
+            <div class="content" [routerLink]="['/home']" [routerLinkActive]="'active'">
+                <div class="icon">
+                </div>
+                <div class="title">
+                    Logout
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
