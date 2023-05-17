@@ -1,20 +1,28 @@
 <div class="content" style="margin-left:50px; margin-right:50px">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID #</th>
-            <th>Request Type</th>
-            <th>Date</th>
-            <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let request of requests">
-          <tr>
-            <td>{{request.requestId}}</td>
-            <td>{{request.requestTypeDescription}}</td>
-            <td>{{request.requestDate}}</td>
-            <td>{{request.requestComment}}</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID #</th>
+        <th>Request By</th>
+        <th>Request Type</th>
+        <th>Request Date</th>
+        <th>Submitted On</th>
+        <th>Comment</th>
+        <th>Status</th>
+        <th>Approved By</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let request of requests">
+      <tr>
+        <td>{{request.requestId}}</td>
+        <td>{{request.requestByUserName}}</td>
+        <td>{{request.requestTypeDescription}}</td>
+        <td>{{request.requestDate|date:'dd-MM-yyyy'}}</td>
+        <td>{{request.createdOn|date:'dd-MM-yyyy'}}</td>
+        <td>{{request.requestComment}}</td>
+        <td>{{request.isApproved==null || 0? 'Pending':'Approved'}}</td>
+        <td>{{request.approvedByUserName}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
