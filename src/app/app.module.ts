@@ -15,6 +15,13 @@ import { ApiHttpService } from './services/ApiHttpService.services';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { RequestService } from './services/request.services';
 import { AgmCoreModule } from '@agm/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
+import { AppMaterialModule } from './app-material/app-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -29,14 +36,16 @@ import { AgmCoreModule } from '@agm/core';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, HttpClientModule,
+    AppRoutingModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule,
+    AppMaterialModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
-    })
+    }),
+    
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,15 +1,22 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <div id="formHeader">
-      <h4>Admin Sign In</h4>
-    </div>
-    <form style="margin-top:50px">
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="User Name">
-      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
-  </div>
+<div class="signin-content">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p>Admin Login</p>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="User Name" formControlName="userName" required>
+          <mat-error *ngIf="isFieldInvalid('userName')">
+            Please Enter User Name 
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error *ngIf="isFieldInvalid('userName')">
+            Please Enter Password
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

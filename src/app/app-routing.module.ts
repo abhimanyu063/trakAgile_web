@@ -6,13 +6,16 @@ import { EmployeeRegistrationComponent } from './pages/employee-registration/emp
 import { EmployeeTrackingComponent } from './pages/employee-tracking/employee-tracking.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import { SiteComponent } from './pages/site/site.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'employee-registration', component: EmployeeRegistrationComponent },
-  { path: 'employee-tracking', component: EmployeeTrackingComponent },
-  { path: 'requests', component: RequestsComponent },
-  { path: 'sites', component: SiteComponent },
+  { path: '', component: DashboardComponent, canActivate:[AuthGuard] },
+  { path: 'employee-registration', component: EmployeeRegistrationComponent, canActivate:[AuthGuard] },
+  { path: 'employee-tracking', component: EmployeeTrackingComponent, canActivate:[AuthGuard] },
+  { path: 'requests', component: RequestsComponent, canActivate:[AuthGuard] },
+  { path: 'sites', component: SiteComponent, canActivate:[AuthGuard] },
+  { path: 'home', component: DashboardComponent, canActivate:[AuthGuard] },
+  {path:'login', component:SignInComponent}
 ];
 
 @NgModule({
