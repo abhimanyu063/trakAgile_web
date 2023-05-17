@@ -2,7 +2,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>ID #</th>
+        <th>S.No</th>
         <th>Request By</th>
         <th>Request Type</th>
         <th>Request Date</th>
@@ -12,9 +12,9 @@
         <th>Approved By</th>
       </tr>
     </thead>
-    <tbody *ngFor="let request of requests">
+    <tbody *ngFor="let request of requests;let indexOfelement=index;">
       <tr>
-        <td>{{request.requestId}}</td>
+        <td>{{indexOfelement + 1}}</td>
         <td>{{request.requestByUserName}}</td>
         <td>{{request.requestTypeDescription}}</td>
         <td>{{request.requestDate|date:'dd-MM-yyyy'}}</td>

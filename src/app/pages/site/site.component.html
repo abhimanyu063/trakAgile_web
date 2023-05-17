@@ -1,26 +1,28 @@
 <div class="content" style="margin-left:50px; margin-right:50px">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Site Name</th>
-            <th>Site Village</th>
-            <th>District</th>
-            <th>Trip Description</th>
-            <th>Site Description</th>
-            <th>Created On</th>
-            <th>User</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let site of sites">
-          <tr>
-            <td>{{site.siteName}}</td>
-            <td>{{site.siteVillageName}}</td>
-            <td>{{site.districtName}}</td>
-            <td>{{site.tripTypeDescription}}</td>
-            <td>{{site.siteTypeDescription}}</td>
-            <td>{{site.createdOn|date:'dd-MM-yyyy'}}</td>
-            <td>{{site.userName}}</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Site Name</th>
+        <th>Site Village</th>
+        <th>District</th>
+        <th>Trip Description</th>
+        <th>Site Description</th>
+        <th>Created On</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let site of sites;let indexOfelement=index;">
+      <tr>
+        <td>{{indexOfelement + 1}}</td>
+        <td>{{site.siteName}}</td>
+        <td>{{site.siteVillageName}}</td>
+        <td>{{site.districtName}}</td>
+        <td>{{site.tripTypeDescription}}</td>
+        <td>{{site.siteTypeDescription}}</td>
+        <td>{{site.createdOn|date:'dd-MM-yyyy'}}</td>
+        <td>{{site.userName}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
