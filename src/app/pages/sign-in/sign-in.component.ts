@@ -31,6 +31,7 @@ export class SignInComponent {
   }
 
   onSubmit() {
+    console.log(this.form.valid);
     if (this.form.valid) {
       this.authService.login(this.form.value);
     }

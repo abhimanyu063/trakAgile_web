@@ -20,6 +20,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RequestsComponent,
     EmployeeTrackingComponent,
     EmployeeRegistrationComponent,
-    SidenavComponent
+    SidenavComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

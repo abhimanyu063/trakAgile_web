@@ -1,4 +1,5 @@
-<app-sidenav [isExpanded]="true" (toggleSidebar)="sidebarExpanded = !sidebarExpanded" *ngIf="isLoggedIn$ | async as isLoggedIn"></app-sidenav>
-<div class="content" [ngClass]="{ 'sidebarExpanded': sidebarExpanded }">
-  <router-outlet></router-outlet>
-</div>
+<!-- <app-sidenav [isExpanded]="true" (toggleSidebar)="sidebarExpanded = !sidebarExpanded" *ngIf="isLoggedIn$ | async as isLoggedIn"></app-sidenav> -->
+<app-sidenav *ngIf="isLoggedIn$ | async as isLoggedIn"></app-sidenav>
+<app-header *ngIf="isLoggedIn$ | async as isLoggedIn"></app-header>
+<!-- <app-dashboard></app-dashboard> -->
+<router-outlet></router-outlet>

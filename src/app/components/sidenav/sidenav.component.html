@@ -1,58 +1,96 @@
-<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
-    <div class="header">
-        <h1 class="title">
-            TrakAgile
-        </h1>
-        <div class="toggle" (click)="handleSidebarToggle()">
-            <span class="chevron"></span>
-        </div>
+<div class="leftside-menu">
+    <!-- Brand Logo Light -->
+    <a href="index.html" class="logo logo-light">
+        <span class="logo-lg">
+            <img src="assets/images/logo11.png" alt="logo">
+        </span>
+        <span class="logo-sm">
+            <img src="assets/images/logo-sm.png" alt="small logo">
+        </span>
+    </a>
+
+    <!-- Brand Logo Dark -->
+    <a href="index.html" class="logo logo-dark">
+        <span class="logo-lg">
+            <img src="assets/images/logo11.png" alt="dark logo">
+        </span>
+        <span class="logo-sm">
+            <img src="assets/images/logo-sm.png" alt="small logo">
+        </span>
+    </a>
+
+    <!-- Sidebar Hover Menu Toggle Button -->
+    <div class="button-sm-hover" data-bs-toggle="tooltip" data-bs-placement="right" title="Show Full Sidebar">
+        <i class="ri-checkbox-blank-circle-line align-middle"></i>
     </div>
-    <div class="content">
-        <div class="link">
-            <div class="content" [routerLink]="['/home']" [routerLinkActive]="'active'">
-                <div class="icon">
-                    <i class="fa fa-house"></i>
-                </div>
-                <div class="title">
-                    Home
-                </div>
-            </div>
-            <div class="content" [routerLink]="['/sites']" [routerLinkActive]="'active'">
-                <div class="icon">
-                </div>
-                <div class="title">
-                    Sites
-                </div>
-            </div>
-            <div class="content" [routerLink]="['/requests']" [routerLinkActive]="'active'">
-                <div class="icon">
-                </div>
-                <div class="title">
-                    Requests
-                </div>
-            </div>
-            <div class="content" [routerLink]="['/employee-tracking']" [routerLinkActive]="'active'">
-                <div class="icon">
-                </div>
-                <div class="title">
-                    Employee Tracking
-                </div>
-            </div>
-            <div class="content" [routerLink]="['/employee-registration']" [routerLinkActive]="'active'">
-                <div class="icon">
-                </div>
-                <div class="title">
-                    Employee Registration
-                </div>
-            </div>
-            <div class="content" [routerLink]="['/home']" [routerLinkActive]="'active'">
-                <div class="icon">
-                </div>
-                <div class="title">
-                    Logout
-                </div>
-            </div>
-        </div>
+
+    <!-- Full Sidebar Menu Close Button -->
+    <div class="button-close-fullsidebar">
+        <i class="ri-close-fill align-middle"></i>
     </div>
-    <div class="footer"></div>
+
+    <!-- Sidebar -left -->
+    <div class="h-100" id="leftside-menu-container" data-simplebar>
+        <!-- Leftbar User -->
+        <div class="leftbar-user">
+            <a href="pages-profile.html">
+                <img src="assets/images/users/avatar-1.jpg" alt="user-image" height="42"
+                    class="rounded-circle shadow-sm">
+                <span class="leftbar-user-name mt-2">Tosha Minner</span>
+            </a>
+        </div>
+
+        <!--- Sidemenu -->
+        <ul class="side-nav">
+
+            <li class="side-nav-title">Navigation</li>
+
+            <li class="side-nav-item">
+                <a routerLink="/home" class="side-nav-link">
+                    <i class="ri-home-4-line"></i>
+                    <span> Dashboards </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a routerLink="/sites" class="side-nav-link">
+                    <i class="ri-calendar-event-line"></i>
+                    <span> Site </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a routerLink="/requests" class="side-nav-link">
+                    <i class="ri-calendar-event-line"></i>
+                    <span> Requests </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a routerLink="/employee-tracking" class="side-nav-link">
+                    <i class="ri-treasure-map-line"></i>
+                    <span> Employee Tracking </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a routerLink="/employee-registration" class="side-nav-link">
+                    <i class="ri-mail-line"></i>
+                    <span> Employee Registration </span>
+
+                </a>
+
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#" class="side-nav-link">
+                    <i class="ri-task-line"></i>
+                    <span>Logout </span>
+
+                </a>
+
+            </li>
+        </ul>
+        <!--- End Sidemenu -->
+
+        <div class="clearfix"></div>
+    </div>
 </div>
