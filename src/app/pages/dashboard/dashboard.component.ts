@@ -36,8 +36,8 @@ export class DashboardComponent implements OnInit {
       this.pendingRequestCount = result.data.pendingRequestCount;
       this.activeUserCount = result.data.activeUserCount;
       this.siteWorkInprogressCount = result.data.siteWorkInprogressCount;
-      this.tripStartedCount = result.data.tripStarted;
-      this.tripEndedCount = result.data.tripEnded;
+      this.tripStartedCount = result.data.tripStartedCount;
+      this.tripEndedCount = result.data.tripEndedCount;
       this.siteWorkCompletedCount = result.data.siteWorkCompletedCount;
       this.reportedSiteIssueCount = result.data.reportedSiteIssueCount;
       this.totalSiteVisited = this.tripStartedCount + this.tripEndedCount;
