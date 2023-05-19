@@ -25,13 +25,12 @@ export class EmployeeRegistrationComponent implements OnInit {
       city: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
-      roleId:2,
-      isActive:1
+      roleId: 2,
+      isActive: 1
     });
   }
-  async onSaveUser()
-  {
-    let result=await this.userServie.onSaveUser(this.userForm.value).toPromise();
+  async onSaveUser() {
+    let result = await this.userServie.onSaveUser(this.userForm.value).toPromise();
     console.log(result);
   }
 }

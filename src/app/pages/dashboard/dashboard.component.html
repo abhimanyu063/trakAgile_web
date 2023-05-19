@@ -6,17 +6,6 @@
         <div class="col-12">
           <div class="page-title-box">
             <div class="page-title-right">
-              <form class="d-flex">
-                <div class="input-group">
-                  <input type="text" class="form-control shadow border-0" id="dash-daterange">
-                  <span class="input-group-text bg-primary border-primary text-white">
-                    <i class="ri-calendar-todo-fill fs-13"></i>
-                  </span>
-                </div>
-                <a href="javascript: void(0);" class="btn btn-primary ms-2">
-                  <i class="ri-refresh-line"></i>
-                </a>
-              </form>
             </div>
             <h4 class="page-title">Dashboard</h4>
           </div>
@@ -29,11 +18,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <div class="flex-grow-1 overflow-hidden">
-                  <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Pending Requests</h5>
-                  <h3 class="my-3">{{pendingRequests}}</h3>
+                  <h5 class="text-muted fw-normal mt-0" title="Pending Requests">Pending Requests</h5>
+                  <h3 class="my-3">{{pendingRequestCount}}</h3>
                   <p class="mb-0 text-muted text-truncate">
                     <span class="badge bg-success me-1">
-                      Approved : {{approvedRequests}}</span>
+                      Approved : {{approvedRequestCount}}</span>
                   </p>
                 </div>
                 <div class="flex-shrink-0">
@@ -49,12 +38,8 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <div class="flex-grow-1 overflow-hidden">
-                  <h5 class="text-muted fw-normal mt-0" title="Number of Orders"> Employee Tracking </h5>
-                  <h3 class="my-3">7,543</h3>
-                  <p class="mb-0 text-muted text-truncate">
-                    <span class="badge bg-danger me-1"><i class="ri-arrow-down-line"></i> 1.08%</span>
-                    <span>Since last month</span>
-                  </p>
+                  <h5 class="text-muted fw-normal mt-0" title="Employee Tracking"> Employee Tracking </h5>
+                  <h3 class="my-3">0</h3>
                 </div>
                 <div id="widget-orders" class="apex-charts" data-colors="#3e60d5,#e3e9ee"></div>
               </div>
@@ -67,15 +52,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <div class="flex-grow-1 overflow-hidden">
-                  <h5 class="text-muted fw-normal mt-0" title="Average Revenue"> Sites Visited </h5>
-                  <h3 class="my-3">{{totalRequests}}</h3>
+                  <h5 class="text-muted fw-normal mt-0" title="Sites Visited"> Sites Visited </h5>
+                  <h3 class="my-3">{{totalSiteVisited}}</h3>
                   <p class="mb-0 text-muted text-truncate">
                     <span class="badge bg-success me-1">
-                      Approved : 2,541</span>
-                  </p>
-                  <p class="mb-0 text-muted text-truncate">
-                    <span class="badge bg-success me-1">
-                      Pending : 2,541</span>
+                      Completed : {{siteWorkCompletedCount}}</span>
                   </p>
                 </div>
                 <div id="widget-revenue" class="apex-charts" data-colors="#16a7e9,#e3e9ee"></div>
@@ -89,15 +70,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <div class="flex-grow-1 overflow-hidden">
-                  <h5 class="text-muted fw-normal mt-0" title="Average Revenue"> Active User </h5>
-                  <h3 class="my-3">{{totalRequests}}</h3>
+                  <h5 class="text-muted fw-normal mt-0" title="Active Users"> Active Users </h5>
+                  <h3 class="my-3">{{activeUserCount}}</h3>
                   <p class="mb-0 text-muted text-truncate">
-                    <span class="badge bg-danger me-1"><i class="ri-arrow-down-line"></i> 7.00%</span>
-                    <span>Since last month</span>
-                  </p>
-                  <p class="mb-0 text-muted text-truncate">
-                    <span class="badge bg-danger me-1">7.00%</span>
-                    <span>Since last month</span>
+                    <span class="badge bg-success me-1">
+                      in-active : {{0}}</span>
                   </p>
                 </div>
                 <div id="widget-revenue" class="apex-charts" data-colors="#16a7e9,#e3e9ee"></div>
@@ -106,22 +83,20 @@
             </div> <!-- end card-body-->
           </div> <!-- end card-->
         </div>
-      </div>
-      <!-- container -->
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div class="flex-grow-1 overflow-hidden">
+                  <h5 class="text-muted fw-normal mt-0" title="Site Reported Issue">Site Reported Issue</h5>
+                  <h3 class="my-3">{{reportedSiteIssueCount}}</h3>
+                </div>
+                <div id="widget-revenue" class="apex-charts" data-colors="#16a7e9,#e3e9ee"></div>
+              </div>
 
-    </div>
-    <!-- content -->
-
-    <!-- Footer Start -->
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <script>document.write(new Date().getFullYear())</script> © TrakAgile
-          </div>
-
+            </div> <!-- end card-body-->
+          </div> <!-- end card-->
         </div>
       </div>
-    </footer>
-    <!-- end Footer -->
+    </div>
   </div>

@@ -13,8 +13,14 @@
                                 <div class="col-lg-12">
                                     <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
                                         <div class="mb-3">
-                                            <label for="simpleinput" class="form-label">Name*</label>
-                                            <input type="text" id="simpleinput" class="form-control" formControlName="name">
+                                            <label for="example-username" class="form-label">User Name*</label>
+                                            <input type="text" id="example-username" class="form-control"
+                                                formControlName="userName">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="example-name" class="form-label">Name*</label>
+                                            <input type="text" id="example-name" class="form-control"
+                                                formControlName="name">
                                         </div>
 
                                         <div class="mb-3">
@@ -25,36 +31,34 @@
 
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Mobile No.*</label>
-                                            <input type="text" id="simpleinput" class="form-control" formControlName="password">
+                                            <input type="text" id="example-email" class="form-control"
+                                                formControlName="mobile">
                                         </div>
                                         <div class="mb-3">
                                             <label for="example-password" class="form-label">Temp Password*</label>
                                             <input type="password" id="example-password" class="form-control"
-                                                value="password">
+                                            formControlName="password" value="">
                                         </div>
                                         <div class="mb-3">
                                             <label for="example-textarea" class="form-label">Address*</label>
-                                            <textarea class="form-control" id="example-textarea" rows="5" formControlName="address"></textarea>
+                                            <textarea class="form-control" id="example-textarea" rows="5"
+                                                formControlName="address"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="example-City" class="form-label">City*</label>
+                                            <input type="text" id="example-City" name="example-City"
+                                                class="form-control" placeholder="" formControlName="city">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="example-State" class="form-label">State*</label>
+                                            <input type="text" id="example-State" name="example-State"
+                                                class="form-control" placeholder="" formControlName="state">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="example-readonly" class="form-label">City*</label>
-                                            <input type="text" id="example-readonly" class="form-control" readonly=""
-                                                value="" formControlName="city">
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <label for="example-static" class="form-label">State*</label>
-                                            <input type="text" id="example-readonly" class="form-control" readonly=""
-                                                value="" formControlName="state">
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <label for="example-static" class="form-label">Country**</label>
-                                            <input type="text" id="example-readonly" class="form-control" readonly=""
-                                                value="" formControlName="country">
+                                            <label for="example-Country" class="form-label">Country*</label>
+                                            <input type="text" id="example-Country" name="example-Country"
+                                                class="form-control" placeholder="" formControlName="country">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>

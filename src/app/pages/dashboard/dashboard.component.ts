@@ -7,9 +7,16 @@ import { DashboardService } from 'src/app/services/dashboard.services';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  totalRequests: Number
-  approvedRequests: Number;
-  pendingRequests: Number;
+  totalRequests: Number;
+  approvedRequestCount: Number;
+  pendingRequestCount: Number;
+  activeUserCount: number;
+  siteWorkInprogressCount: number;
+  tripStartedCount: number;
+  tripEndedCount: number;
+  siteWorkCompletedCount: number;
+  reportedSiteIssueCount: number;
+  totalSiteVisited: number;
 
   constructor(private dashboardService: DashboardService) {
 
@@ -23,10 +30,17 @@ export class DashboardComponent implements OnInit {
     this.totalRequests = 200;
   }
   async getDashboardDetail() {
+    
     this.dashboardService.getDashboardDetails().subscribe((result: any) => {
-      this.approvedRequests = result.data.approvedRequestCount;
-      this.pendingRequests = result.data.pendingRequestCount;
+      this.approvedRequestCount = result.data.approvedRequestCount;
+      this.pendingRequestCount = result.data.pendingRequestCount;
+      this.activeUserCount = result.data.activeUserCount;
+      this.siteWorkInprogressCount = result.data.siteWorkInprogressCount;
+      this.tripStartedCount = result.data.tripStarted;
+      this.tripEndedCount = result.data.tripEnded;
+      this.siteWorkCompletedCount = result.data.siteWorkCompletedCount;
+      this.reportedSiteIssueCount = result.data.reportedSiteIssueCount;
+      this.totalSiteVisited = this.tripStartedCount + this.tripEndedCount;
     });
-
   }
 }
