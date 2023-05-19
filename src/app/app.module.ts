@@ -21,6 +21,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
+import { DashboardService } from './services/dashboard.services';
+import { UserService } from './services/user.services';
 
 
 
@@ -47,7 +49,7 @@ import { HeaderComponent } from './components/header/header.component';
     }),
     
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
