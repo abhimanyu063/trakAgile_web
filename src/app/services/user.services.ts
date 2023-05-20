@@ -10,4 +10,8 @@ export class UserService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.post(AppConfig.apiBaseUrl + `users/adduser`, userData);
     }
+    onValidateAdmin(userData:any): any {
+        const apiService = this.injector.get(ApiHttpService);
+        return apiService.post(AppConfig.apiBaseUrl + `users/validateAdminAndGetDetails`, userData);
+    }
 }
