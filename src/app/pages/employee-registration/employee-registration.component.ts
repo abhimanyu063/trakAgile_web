@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { HeaderService } from 'src/app/services/header.services';
 import { UserService } from 'src/app/services/user.services';
 
 @Component({
@@ -13,11 +14,12 @@ export class EmployeeRegistrationComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private userServie: UserService, private formGroup: FormBuilder, private matsnack: MatSnackBar) {
+  constructor(private userServie: UserService, private formGroup: FormBuilder, private matsnack: MatSnackBar, private headerService:HeaderService) {
 
 
   }
   ngOnInit(): void {
+    //this.headerService.setHeaderVisibility(false);
     this.userForm = this.formGroup.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],

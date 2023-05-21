@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
+import { HeaderService } from 'src/app/services/header.services';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class SidenavComponent {
   @Input() isExpanded: boolean = true;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor(private authService:AuthService)
+  constructor(private authService:AuthService, private headerService:HeaderService)
   {
 
   }
@@ -21,5 +22,6 @@ export class SidenavComponent {
   onLogout()
   {
     this.authService.logout();
+    this.headerService.setHeaderVisibility(false);
   }
 }

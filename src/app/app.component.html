@@ -1,5 +1,5 @@
 <!-- <app-sidenav [isExpanded]="true" (toggleSidebar)="sidebarExpanded = !sidebarExpanded" *ngIf="isLoggedIn$ | async as isLoggedIn"></app-sidenav> -->
 <app-sidenav *ngIf="isLoggedIn$ | async as isLoggedIn"></app-sidenav>
-<app-header *ngIf="isLoggedIn$ | async as isLoggedIn"></app-header>
+<app-header *ngIf="isHeaderVisible$ | async as isHeaderVisible"></app-header>
 <!-- <app-dashboard></app-dashboard> -->
 <router-outlet></router-outlet>

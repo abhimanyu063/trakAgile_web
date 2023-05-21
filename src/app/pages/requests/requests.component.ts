@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request.services';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
+import { HeaderService } from 'src/app/services/header.services';
 
 @Component({
   selector: 'app-requests',
@@ -15,10 +16,11 @@ export class RequestsComponent implements OnInit {
   fromDate:Date= new Date();
   toDate:Date= new Date();
   
-  constructor(private requestService: RequestService, private datePipe:DatePipe) {
+  constructor(private requestService: RequestService, private datePipe:DatePipe, private headerService:HeaderService) {
 
   }
   ngOnInit(): void {
+    this.headerService.setHeaderVisibility(true);
     this.fromDate.setDate( this.fromDate.getDate() -10 );
     this.getRequests();
   }

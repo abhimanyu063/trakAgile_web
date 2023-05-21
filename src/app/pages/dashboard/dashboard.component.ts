@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.services';
+import { HeaderService } from 'src/app/services/header.services';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,10 +19,11 @@ export class DashboardComponent implements OnInit {
   reportedSiteIssueCount: number;
   totalSiteVisited: number;
 
-  constructor(private dashboardService: DashboardService) {
+  constructor(private dashboardService: DashboardService, private headerService:HeaderService) {
 
   }
   ngOnInit(): void {
+    //this.headerService.setHeaderVisibility(false);
     this.getTotalRequests();
     this.getDashboardDetail();
   }

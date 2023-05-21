@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
+import { HeaderService } from './services/header.services';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +13,12 @@ export class AppComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
   title = 'Trak Agile';
   sidebarExpanded = true;
-  constructor(private authService:AuthService)
-  {
+  isHeaderVisible$: Observable<boolean>;
+  constructor(private authService: AuthService, private router: Router, private headerService: HeaderService) {
 
   }
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
-  }
-  onLogout() {
-    this.authService.logout();
+    this.isHeaderVisible$ = this.headerService.isHeaderVisible;
   }
 }

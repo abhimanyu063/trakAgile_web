@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HeaderService } from 'src/app/services/header.services';
 import { SiteService } from 'src/app/services/site.services';
 
 @Component({
@@ -8,10 +9,11 @@ import { SiteService } from 'src/app/services/site.services';
 })
 export class SiteComponent implements OnInit {
   sites: any = [];
-  constructor(private siteService: SiteService) {
+  constructor(private siteService: SiteService, private headerService:HeaderService) {
 
   }
   ngOnInit(): void {
+    this.headerService.setHeaderVisibility(true);
     this.getSites();
   }
   getSites() {
@@ -25,4 +27,5 @@ export class SiteComponent implements OnInit {
       this.sites = response.data;
     });
   }
+  
 }
