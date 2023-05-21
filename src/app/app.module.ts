@@ -24,7 +24,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DashboardService } from './services/dashboard.services';
 import { UserService } from './services/user.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { DatePipe } from '@angular/common';
 
 
@@ -40,7 +40,7 @@ import { DatePipe } from '@angular/common';
     EmployeeRegistrationComponent,
     SidenavComponent,
     HeaderComponent,
-    ForgotPasswordComponent
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,
