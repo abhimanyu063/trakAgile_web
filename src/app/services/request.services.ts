@@ -14,7 +14,7 @@ export class RequestService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + "requests/getRequestsByUserId/" + userId + "");
     }
-    getAllRequests(startDate: string, endDate: string): any {
+    getAllRequests(startDate: any, endDate: any): any {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + `requests/getRequests/${startDate}/${endDate}`);
     }

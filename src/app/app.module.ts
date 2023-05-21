@@ -15,7 +15,7 @@ import { ApiHttpService } from './services/ApiHttpService.services';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { RequestService } from './services/request.services';
 import { AgmCoreModule } from '@agm/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AppMaterialModule } from './app-material/app-material.module';
@@ -25,6 +25,7 @@ import { DashboardService } from './services/dashboard.services';
 import { UserService } from './services/user.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -44,7 +45,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
   imports: [
     BrowserModule,
     AppRoutingModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule,
-    AppMaterialModule,
+    AppMaterialModule, FormsModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
@@ -52,7 +53,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     }),
     
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
