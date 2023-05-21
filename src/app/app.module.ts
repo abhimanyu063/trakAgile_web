@@ -24,6 +24,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DashboardService } from './services/dashboard.services';
 import { UserService } from './services/user.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 
@@ -37,7 +38,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     EmployeeTrackingComponent,
     EmployeeRegistrationComponent,
     SidenavComponent,
-    HeaderComponent
+    HeaderComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.services';
 
 @Component({
@@ -8,9 +9,11 @@ import { UserService } from 'src/app/services/user.services';
   styleUrls: ['./employee-registration.component.scss']
 })
 export class EmployeeRegistrationComponent implements OnInit {
-  userForm: FormGroup
+  userForm: FormGroup;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private userServie: UserService, private formGroup: FormBuilder) {
+  constructor(private userServie: UserService, private formGroup: FormBuilder, private matsnack: MatSnackBar) {
 
 
   }
@@ -30,7 +33,21 @@ export class EmployeeRegistrationComponent implements OnInit {
     });
   }
   async onSaveUser() {
-    let result = await this.userServie.onSaveUser(this.userForm.value).toPromise();
-    console.log(result);
+    if (!this.userForm.invalid) {
+      let result = await this.userServie.onSaveUser(this.userForm.value).toPromise();
+      this.matsnack.open("User registered successfully.", 'Dismiss', {
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        duration: 5000
+      });
+      this.userForm.reset();
+    }
+    else {
+      this.matsnack.open("All fields are mandatory.", 'Dismiss', {
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        duration: 5000
+      });
+    }
   }
 }
