@@ -8,6 +8,6 @@ export class ForgetPassword {
     }
     onSubmitForgetPassword(userForgetPasswordData:any): any {
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.post(AppConfig.apiBaseUrl + `forgetpassword/validateForgetPassword`, userForgetPasswordData);
+        return apiService.post(AppConfig.apiBaseUrl + `users/validateForgetPassword`, userForgetPasswordData);
     }
 }

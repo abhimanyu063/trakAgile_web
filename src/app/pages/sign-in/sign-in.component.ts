@@ -37,4 +37,7 @@ export class SignInComponent {
     }
     this.formSubmitAttempt = true;
   }
+  validateUserNameandEmail(){
+    
+  }
 }

@@ -19,9 +19,7 @@ export class ForgetPasswordComponent {
   }
   ngOnInit(): void {
     this.userForgetPasswordForm = this.formGroup.group({
-      userName: ['', Validators.required],
       email: ['', Validators.required],
-      mobile: ['', Validators.required],
     });
   }
 
@@ -36,7 +34,7 @@ export class ForgetPasswordComponent {
       this.userForgetPasswordForm.reset();
     }
     else {
-      this.matsnack.open("All fields are mandatory.", 'Dismiss', {
+      this.matsnack.open("Email id is required.", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
         duration: 5000

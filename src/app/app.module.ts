@@ -54,7 +54,7 @@ import { HeaderService } from './services/header.services';
     }),
     
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordComponent],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
