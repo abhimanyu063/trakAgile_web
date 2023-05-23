@@ -1,0 +1,73 @@
+<div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box">
+              <div class="page-title-right">
+                <form class="d-flex">
+                  <!-- <div class="input-group text-center" style="vertical-align:middle">
+                    <span class="label label-info text-center">From</span>
+                  </div> -->
+                  <!-- <a href="javascript: void(0);" class="btn btn-primary ms-2" (click)="onRefreshRequests()">
+                    <i class="ri-refresh-line"></i>
+                  </a> -->
+                </form>
+              </div>
+              <h4 class="page-title">User Details</h4>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-lg-12" style="text-align:right; align-items:right">
+            <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+        </div>
+        </div> -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <p class="text-muted fs-14">
+                <div class="table-responsive" id="requestReport">
+                  <table class="table table-hove rtable">
+                    <thead>
+                      <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Name </th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Is Active</th>
+                        <!-- <th scope="col">Created On</th> -->
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let request of requests;let indexOfelement=index;">
+                      <tr>
+                        <td scope="row">{{indexOfelement + 1}}</td>
+                        <td>{{request.userName}}</td>
+                        <td>{{request.name}}</td>
+                        <td>{{request.email}}</td>
+                        <td>{{request.mobile}}</td>
+                        <td>{{request.address}}</td>
+                        <td>{{request.city}}</td>
+                        <td>{{request.state}}</td>
+                        <td>{{request.country}}</td>
+                        <td>{{request.roleId ==  2? 'User':'Admin'}}</td>
+                        <td>{{request.isActive == 1? 'Yes':'No'}}</td>
+                        <!-- <td>{{request.createdOn|date:'dd-MM-yyyy'}}</td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

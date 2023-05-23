@@ -18,4 +18,8 @@ export class UserService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.post(AppConfig.apiBaseUrl + `users/validateUserNameandEmail`, userData);
     }
+    getAllUsers(): any {
+        const apiService = this.injector.get(ApiHttpService);
+        return apiService.get(AppConfig.apiBaseUrl + `users/getUserDetails`);
+    }
 }

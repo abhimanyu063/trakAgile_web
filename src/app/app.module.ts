@@ -28,7 +28,7 @@ import { ForgetPasswordComponent } from './pages/forget-password/forget-password
 import { DatePipe } from '@angular/common';
 import { HeaderService } from './services/header.services';
 import { ForgetPasswordService } from './services/forgetpassword.services';
-
+import { UserDetailsComponent} from './pages/user-details/userdetails.component';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import { ForgetPasswordService } from './services/forgetpassword.services';
     EmployeeRegistrationComponent,
     SidenavComponent,
     HeaderComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
