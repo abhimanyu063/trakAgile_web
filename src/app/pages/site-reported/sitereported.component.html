@@ -40,7 +40,7 @@
                         <th scope="col">Site Name</th>
                         <th scope="col">Site Village Name</th>
                         <th scope="col">Comments</th>
-                        <!-- <th scope="col">Created On</th> -->
+                        <th scope="col">Reported On</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let request of requests;let indexOfelement=index;">
@@ -53,7 +53,7 @@
                         <td>{{request.siteName}}</td>
                         <td>{{request.siteVillageName}}</td>
                         <td>{{request.comment}}</td>
-                        <!-- <td>{{request.createdOn|date:'dd-MM-yyyy'}}</td> -->
+                        <td>{{request.createdOn|date:'dd-MM-yyyy'}}</td>
                       </tr>
                     </tbody>
                   </table>
