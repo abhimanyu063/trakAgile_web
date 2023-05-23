@@ -9,6 +9,7 @@ import { SiteComponent } from './pages/site/site.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { UserDetailsComponent } from './pages/user-details/userdetails.component';
+import { SiteReportedComponent } from './pages/site-reported/sitereported.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'home', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: SignInComponent },
   { path: 'forget-password', component: ForgetPasswordComponent },
-  { path: 'userdetails', component:  UserDetailsComponent}
+  { path: 'userdetails', component:  UserDetailsComponent},
+  { path: 'sitereporteddetails', component:  SiteReportedComponent}
 ];
 
 @NgModule({

@@ -18,4 +18,8 @@ export class SiteService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + `sites/getSites/${startDate}/${endDate}`);
     }
+    getAllSiteReportedIsuue(): any {
+        const apiService = this.injector.get(ApiHttpService);
+        return apiService.get(AppConfig.apiBaseUrl + `users/getSiteReportedIsuueDetails`);
+    }
 }

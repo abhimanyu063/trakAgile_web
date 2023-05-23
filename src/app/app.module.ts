@@ -29,6 +29,7 @@ import { DatePipe } from '@angular/common';
 import { HeaderService } from './services/header.services';
 import { ForgetPasswordService } from './services/forgetpassword.services';
 import { UserDetailsComponent} from './pages/user-details/userdetails.component';
+import { SiteReportedComponent } from './pages/site-reported/sitereported.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { UserDetailsComponent} from './pages/user-details/userdetails.component'
     SidenavComponent,
     HeaderComponent,
     ForgetPasswordComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    SiteReportedComponent
   ],
   imports: [
     BrowserModule,
