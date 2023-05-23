@@ -26,7 +26,7 @@ export class ForgetPasswordComponent {
   async onSubmitForgetPassword() {
     if (!this.userForgetPasswordForm.invalid) {
       let result = await this.forgetPasswordServie.onSubmitForgetPassword(this.userForgetPasswordForm.value).toPromise();
-      this.matsnack.open("User registered successfully.", 'Dismiss', {
+      this.matsnack.open("Password has been sent to your email " + result.data.email + ".", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
         duration: 5000
