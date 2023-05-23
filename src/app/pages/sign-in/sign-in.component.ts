@@ -35,7 +35,7 @@ export class SignInComponent {
   }
 
   onSubmit() {
-    if (!this.form.valid) {
+    if (this.form.valid) {
       this.authService.login(this.form.value);
     }
     else {
