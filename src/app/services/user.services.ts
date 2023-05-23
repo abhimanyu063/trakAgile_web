@@ -6,12 +6,16 @@ import { AppConfig } from "../appconfig";
 export class UserService {
     constructor(private injector: Injector) {
     }
-    onSaveUser(userData:any): any {
+    onSaveUser(userData: any): any {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.post(AppConfig.apiBaseUrl + `users/adduser`, userData);
     }
-    onValidateAdmin(userData:any): any {
+    onValidateAdmin(userData: any): any {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.post(AppConfig.apiBaseUrl + `users/validateAdminAndGetDetails`, userData);
+    }
+    validateUserNameandEmail(userData: any): any {
+        const apiService = this.injector.get(ApiHttpService);
+        return apiService.post(AppConfig.apiBaseUrl + `users/validateUserNameandEmail`, userData);
     }
 }

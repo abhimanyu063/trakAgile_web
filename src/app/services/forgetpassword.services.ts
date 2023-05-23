@@ -3,7 +3,7 @@ import { ApiHttpService } from "./ApiHttpService.services";
 import { AppConfig } from "../appconfig";
 
 @Injectable()
-export class ForgetPassword {
+export class ForgetPasswordService {
     constructor(private injector: Injector) {
     }
     onSubmitForgetPassword(userForgetPasswordData:any): any {

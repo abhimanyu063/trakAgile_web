@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { ForgetPassword } from 'src/app/services/forgetpassword.services';
+import { ForgetPasswordService } from 'src/app/services/forgetpassword.services';
 
 @Component({
   selector: 'app-forget-password',
@@ -13,7 +13,7 @@ export class ForgetPasswordComponent {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private forgetPasswordServie: ForgetPassword, private formGroup: FormBuilder, private matsnack: MatSnackBar) {
+  constructor(private forgetPasswordServie: ForgetPasswordService, private formGroup: FormBuilder, private matsnack: MatSnackBar) {
 
 
   }

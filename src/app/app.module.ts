@@ -27,6 +27,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { DatePipe } from '@angular/common';
 import { HeaderService } from './services/header.services';
+import { ForgetPasswordService } from './services/forgetpassword.services';
 
 
 
@@ -54,7 +55,7 @@ import { HeaderService } from './services/header.services';
     }),
     
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordComponent],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
