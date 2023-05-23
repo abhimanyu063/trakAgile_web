@@ -47,7 +47,7 @@
                   </thead>
                   <tbody *ngFor="let request of requests;let indexOfelement=index;">
                     <tr>
-                      <th scope="row">{{indexOfelement + 1}}</th>
+                      <td scope="row">{{indexOfelement + 1}}</td>
                       <td>{{request.requestByUserName}}</td>
                       <td>{{request.requestTypeDescription}}</td>
                       <td>{{request.requestDate|date:'dd-MM-yyyy'}}</td>
