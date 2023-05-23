@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/auth/auth.service';
 
 
@@ -11,11 +12,13 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class SignInComponent {
   form: FormGroup;
   private formSubmitAttempt: boolean;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService, private matsnack: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -32,8 +35,15 @@ export class SignInComponent {
   }
 
   onSubmit() {
-    if (this.form.valid) {
+    if (!this.form.valid) {
       this.authService.login(this.form.value);
+    }
+    else {
+      this.matsnack.open("All fields are mandatory.", 'Dismiss', {
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        duration: 5000
+      });
     }
     this.formSubmitAttempt = true;
   }
