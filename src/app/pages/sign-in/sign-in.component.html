@@ -208,14 +208,14 @@
                                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
                                     <div class="mb-3">
-                                        <label for="emailaddress" class="form-label">User Name</label>
+                                        <label for="emailaddress" class="form-label">User Name*</label>
                                         <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your User Name"
                                         formControlName="userName">
                                     </div>
 
                                     <div class="mb-3">
                                         <a routerLink="/forget-password" class="text-muted float-end fs-12">Forgot your password?</a>
-                                        <label for="password" class="form-label">Password</label>
+                                        <label for="password" class="form-label">Password*</label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="password" class="form-control" placeholder="Enter your password"
                                             formControlName="password">
