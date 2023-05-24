@@ -47,7 +47,7 @@ export class EmployeeRegistrationComponent implements OnInit {
         this.userForm.reset();
       }
       else {
-        if (validateUserNameEmail.data.userName == this.userForm.value.userName.trim()) {
+        if (validateUserNameEmail.data.userName.trim() == this.userForm.value.userName.trim()) {
           this.matsnack.open("This user name " + validateUserNameEmail.data.userName + " is already registered, Please try another user name.", 'Dismiss', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
@@ -55,7 +55,7 @@ export class EmployeeRegistrationComponent implements OnInit {
           });
           this.userForm.value.userName = [''];
         }
-        else if (validateUserNameEmail.data.email == this.userForm.value.email.trim()) {
+        else if (validateUserNameEmail.data.email.trim() == this.userForm.value.email.trim()) {
           this.matsnack.open("This email " + validateUserNameEmail.data.email + " is already registered, Please try another email.", 'Dismiss', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
@@ -63,7 +63,7 @@ export class EmployeeRegistrationComponent implements OnInit {
           });
           this.userForm.value.userName = [''];
         }
-        else if (validateUserNameEmail.data.mobile == this.userForm.value.mobile.trim()) {
+        else if (validateUserNameEmail.data.mobile.trim() == this.userForm.value.mobile.trim()) {
           this.matsnack.open("This mobile number " + validateUserNameEmail.data.mobile + " is already registered, Please try another mobile number.", 'Dismiss', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,

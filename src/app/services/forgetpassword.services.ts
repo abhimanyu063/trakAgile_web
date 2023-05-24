@@ -6,8 +6,8 @@ import { AppConfig } from "../appconfig";
 export class ForgetPasswordService {
     constructor(private injector: Injector) {
     }
-    onSubmitForgetPassword(userForgetPasswordData:any): any {
+    onSubmitForgetPassword(userName: any): any {
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.post(AppConfig.apiBaseUrl + `users/validateForgetPassword`, userForgetPasswordData);
+        return apiService.get(AppConfig.apiBaseUrl + `users/forgetPassword/${userName}`);
     }
 }

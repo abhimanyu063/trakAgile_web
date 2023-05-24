@@ -30,6 +30,9 @@ import { HeaderService } from './services/header.services';
 import { ForgetPasswordService } from './services/forgetpassword.services';
 import { UserDetailsComponent} from './pages/user-details/userdetails.component';
 import { SiteReportedComponent } from './pages/site-reported/sitereported.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ChangePasswordService } from './services/changepassword.services';
+
 
 
 @NgModule({
@@ -45,7 +48,8 @@ import { SiteReportedComponent } from './pages/site-reported/sitereported.compon
     HeaderComponent,
     ForgetPasswordComponent,
     UserDetailsComponent,
-    SiteReportedComponent
+    SiteReportedComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ import { SiteReportedComponent } from './pages/site-reported/sitereported.compon
     }),
     
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

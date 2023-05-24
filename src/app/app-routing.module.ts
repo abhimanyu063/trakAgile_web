@@ -10,6 +10,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { UserDetailsComponent } from './pages/user-details/userdetails.component';
 import { SiteReportedComponent } from './pages/site-reported/sitereported.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -20,8 +21,9 @@ const routes: Routes = [
   { path: 'home', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: SignInComponent },
   { path: 'forget-password', component: ForgetPasswordComponent },
-  { path: 'userdetails', component:  UserDetailsComponent},
-  { path: 'sitereporteddetails', component:  SiteReportedComponent}
+  { path: 'userdetails', component: UserDetailsComponent },
+  { path: 'sitereporteddetails', component: SiteReportedComponent },
+  { path: 'change-password', component: ChangePasswordComponent }
 ];
 
 @NgModule({

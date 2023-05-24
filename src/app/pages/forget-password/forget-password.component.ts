@@ -19,13 +19,13 @@ export class ForgetPasswordComponent {
   }
   ngOnInit(): void {
     this.userForgetPasswordForm = this.formGroup.group({
-      email: ['', Validators.required],
+      userName: ['', Validators.required],
     });
   }
 
   async onSubmitForgetPassword() {
     if (!this.userForgetPasswordForm.invalid) {
-      let result = await this.forgetPasswordServie.onSubmitForgetPassword(this.userForgetPasswordForm.value).toPromise();
+      let result = await this.forgetPasswordServie.onSubmitForgetPassword(this.userForgetPasswordForm.value.userName.trim()).toPromise();
       this.matsnack.open("Password has been sent to your email " + result.data.email + ".", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
@@ -34,7 +34,7 @@ export class ForgetPasswordComponent {
       this.userForgetPasswordForm.reset();
     }
     else {
-      this.matsnack.open("Email id is required.", 'Dismiss', {
+      this.matsnack.open("UserName / email or mobile is required.", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
         duration: 5000
