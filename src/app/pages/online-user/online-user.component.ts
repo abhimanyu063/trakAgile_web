@@ -1,0 +1,31 @@
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.services';
+import { DatePipe } from '@angular/common';
+import { FormControl, FormGroup } from '@angular/forms';
+import { HeaderService } from 'src/app/services/header.services';
+
+@Component({
+  selector: 'app-requests',
+  templateUrl: './online-user.component.html',
+  styleUrls: ['./online-user.component.scss']
+})
+export class OnlineUserComponent implements OnInit {
+  requests: any = []
+  constructor(private userService: UserService, private datePipe:DatePipe, private headerService:HeaderService) {
+
+  }
+  ngOnInit(): void {
+    this.headerService.setHeaderVisibility(true);
+    this.getOnlineUsers();
+  }
+  getOnlineUsers() {
+    this.userService.getOnlineUsers().subscribe((response: any) => {
+      this.requests = response.data;
+      console.log(this.requests)
+    });
+  }
+  onRefreshRequests()
+  {
+    this.getOnlineUsers();
+  }
+}

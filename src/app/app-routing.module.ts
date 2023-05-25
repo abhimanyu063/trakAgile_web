@@ -11,6 +11,7 @@ import { ForgetPasswordComponent } from './pages/forget-password/forget-password
 import { UserDetailsComponent } from './pages/user-details/userdetails.component';
 import { SiteReportedComponent } from './pages/site-reported/sitereported.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { OnlineUserComponent } from './pages/online-user/online-user.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -23,7 +24,9 @@ const routes: Routes = [
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'userdetails', component: UserDetailsComponent },
   { path: 'sitereporteddetails', component: SiteReportedComponent },
-  { path: 'change-password', component: ChangePasswordComponent }
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'online-user', component: OnlineUserComponent },
+  
 ];
 
 @NgModule({
