@@ -32,6 +32,7 @@ import { UserDetailsComponent} from './pages/user-details/userdetails.component'
 import { SiteReportedComponent } from './pages/site-reported/sitereported.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ChangePasswordService } from './services/changepassword.services';
+import { OnlineUserComponent } from './pages/online-user/online-user.component';
 
 
 
@@ -49,7 +50,8 @@ import { ChangePasswordService } from './services/changepassword.services';
     ForgetPasswordComponent,
     UserDetailsComponent,
     SiteReportedComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    OnlineUserComponent
   ],
   imports: [
     BrowserModule,

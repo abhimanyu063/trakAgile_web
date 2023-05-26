@@ -34,22 +34,20 @@
                       <tr>
                         <th scope="col">S.No</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Site Name </th>
-                        <th scope="col">Village Name</th>
                         <th scope="col">Site Description</th>
                         <th scope="col">District Name</th>
-                        <th scope="col">Total Site</th>
-                        <!-- <th scope="col">Site Added Time</th> -->
+                        <th scope="col">Trip Type</th>
+                        <th scope="col">Total Site Added</th>
+                        
                       </tr>
                     </thead>
                     <tbody *ngFor="let request of requests;let indexOfelement=index;">
                       <tr>
                         <td scope="row">{{indexOfelement + 1}}</td>
                         <td>{{request.name}}</td>
-                        <td>{{request.siteName}}</td>
-                        <td>{{request.siteVillageName}}</td>
                         <td>{{request.siteTypeDescription}}</td>
                         <td>{{request.districtName}}</td>
+                        <td>{{request.tripTypeId ==  1? 'Local':'Non Local'}}</td>
                         <td>{{request.count}}</td>
                       </tr>
                     </tbody>
