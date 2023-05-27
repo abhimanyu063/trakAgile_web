@@ -10,12 +10,17 @@ import { DatePipe } from '@angular/common';
   templateUrl: './site.component.html',
   styleUrls: ['./site.component.scss']
 })
+
 export class SiteComponent implements OnInit {
   sites: any = [];
   requests: any = []
   fromDate: Date = new Date();
   toDate: Date = new Date();
   event: any = [];
+  events: any =[];
+  p: number = 1; // Current page number
+  pageSize: number = 10;
+  totalpage: number = 0;
   constructor(private SiteService: SiteService, private headerService: HeaderService, private datePipe: DatePipe) {
 
   }
@@ -33,8 +38,10 @@ export class SiteComponent implements OnInit {
       var yyyy = today.getFullYear();
 
       var todayDate = `${yyyy}-${mm}-${dd}`;
-      this.SiteService.getAllSites('2023-05-01', todayDate).subscribe((response: any) => {
+      this.SiteService.getAllSites('2023-05-01', todayDate, 0).subscribe((response: any) => {
         this.sites = response.data;
+        this.totalpage = response.total;
+        console.log(this.totalpage);
       });
     }
     catch (error) {
@@ -60,7 +67,7 @@ export class SiteComponent implements OnInit {
   }
   onRefreshRequests() {
     try {
-      this.SiteService.getAllSites(this.fromDate, this.toDate).subscribe((response: any) => {
+      this.SiteService.getAllSites(this.fromDate, this.toDate, 0).subscribe((response: any) => {
         this.sites = response.data;
       });
     }
@@ -84,7 +91,7 @@ export class SiteComponent implements OnInit {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
-        this.SiteService.getAllSites(weeklyDate, todayDate).subscribe((response: any) => {
+        this.SiteService.getAllSites(weeklyDate, todayDate, 0).subscribe((response: any) => {
           this.sites = response.data;
         });
       }
@@ -98,8 +105,68 @@ export class SiteComponent implements OnInit {
         var dd = String(today.getDate() - 30).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
-        var montlyDate = `${yyyy}-${mm}-${dd}`;
-        this.SiteService.getAllSites(montlyDate, todayDate).subscribe((response: any) => {
+        var monthlyDate = `${yyyy}-${mm}-${dd}`;
+        this.SiteService.getAllSites(monthlyDate, todayDate, 0).subscribe((response: any) => {
+          this.sites = response.data;
+        });
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+  renderPage(event: number) {
+    this.p = event;
+    console.log(this.p);
+    this.getSites();
+  }
+  onChangeStatus(events: any){
+    try {
+      if (events.target.value == 0) {
+        this.getSites()
+      }
+      else if (events.target.value == 1) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var todayDate = `${yyyy}-${mm}-${dd}`;
+        var date = new Date();
+        var dd = String(today.getDate() - 7).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var weeklyDate = `${yyyy}-${mm}-${dd}`;
+        this.SiteService.getAllSites('2023-05-01', todayDate, 1).subscribe((response: any) => {
+          this.sites = response.data;
+        });
+      }
+      else if (events.target.value == 2) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var todayDate = `${yyyy}-${mm}-${dd}`;
+        var date = new Date();
+        var dd = String(today.getDate() - 30).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var monthlyDate = `${yyyy}-${mm}-${dd}`;
+        this.SiteService.getAllSites('2023-05-01', todayDate, 2).subscribe((response: any) => {
+          this.sites = response.data;
+        });
+      }
+      else if (events.target.value == 3) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var todayDate = `${yyyy}-${mm}-${dd}`;
+        var date = new Date();
+        var dd = String(today.getDate() - 30).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var monthlyDate = `${yyyy}-${mm}-${dd}`;
+        this.SiteService.getAllSites('2023-05-01', todayDate, 3).subscribe((response: any) => {
           this.sites = response.data;
         });
       }

@@ -46,4 +46,44 @@ export class RequestsComponent implements OnInit {
     console.log(this.fromDate);
     this.getRequests();
   }
+  onChange(event: any) {
+    try {
+      if (event.target.value == 0) {
+        this.getRequests()
+      }
+      else if (event.target.value == 1) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var todayDate = `${yyyy}-${mm}-${dd}`;
+        var date = new Date();
+        var dd = String(today.getDate() - 7).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var weeklyDate = `${yyyy}-${mm}-${dd}`;
+        this.requestService.getAllRequests(weeklyDate, todayDate).subscribe((response: any) => {
+          this.requests = response.data;
+        });
+      }
+      else if (event.target.value == 2) {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var todayDate = `${yyyy}-${mm}-${dd}`;
+        var date = new Date();
+        var dd = String(today.getDate() - 30).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var monthlyDate = `${yyyy}-${mm}-${dd}`;
+        this.requestService.getAllRequests(monthlyDate, todayDate).subscribe((response: any) => {
+          this.requests = response.data;
+        });
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 }

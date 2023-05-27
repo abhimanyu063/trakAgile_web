@@ -29,10 +29,10 @@ import { DatePipe } from '@angular/common';
 import { HeaderService } from './services/header.services';
 import { ForgetPasswordService } from './services/forgetpassword.services';
 import { UserDetailsComponent} from './pages/user-details/userdetails.component';
-import { SiteReportedComponent } from './pages/site-reported/sitereported.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ChangePasswordService } from './services/changepassword.services';
 import { OnlineUserComponent } from './pages/online-user/online-user.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -49,14 +49,13 @@ import { OnlineUserComponent } from './pages/online-user/online-user.component';
     HeaderComponent,
     ForgetPasswordComponent,
     UserDetailsComponent,
-    SiteReportedComponent,
     ChangePasswordComponent,
     OnlineUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule,
-    AppMaterialModule, FormsModule,
+    AppMaterialModule, FormsModule, NgxPaginationModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en

@@ -14,9 +14,9 @@ export class SiteService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + "sites/getSitesByUserId/" + userId + "");
     }
-    getAllSites(startDate: any, endDate: any): any {
+    getAllSites(startDate: any, endDate: any, status: any): any {
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.get(AppConfig.apiBaseUrl + `sites/getSites/${startDate}/${endDate}`);
+        return apiService.get(AppConfig.apiBaseUrl + `sites/getSites/${startDate}/${endDate}/${status}`);
     }
     getAllSiteReportedIsuue(): any {
         const apiService = this.injector.get(ApiHttpService);
