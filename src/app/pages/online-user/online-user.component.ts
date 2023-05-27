@@ -10,7 +10,11 @@ import { HeaderService } from 'src/app/services/header.services';
   styleUrls: ['./online-user.component.scss']
 })
 export class OnlineUserComponent implements OnInit {
-  requests: any = []
+  requests: any = [];
+  page: number = 1; // Current page number
+  tableSize: number = 10;
+  tableSizes: any = [5, 10, 15, 20];
+  count: number = 0;
   constructor(private userService: UserService, private datePipe:DatePipe, private headerService:HeaderService) {
 
   }
@@ -26,6 +30,10 @@ export class OnlineUserComponent implements OnInit {
   }
   onRefreshRequests()
   {
+    this.getOnlineUsers();
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
     this.getOnlineUsers();
   }
 }

@@ -15,6 +15,10 @@ export class RequestsComponent implements OnInit {
   requests: any = []
   fromDate:Date= new Date();
   toDate:Date= new Date();
+  page: number = 1; // Current page number
+  tableSize: number = 10;
+  tableSizes: any = [5, 10, 15, 20];
+  count: number = 0;
   
   constructor(private requestService: RequestService, private datePipe:DatePipe, private headerService:HeaderService) {
 
@@ -70,5 +74,9 @@ export class RequestsComponent implements OnInit {
     catch (error) {
       console.log(error);
     }
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getRequests();
   }
 }

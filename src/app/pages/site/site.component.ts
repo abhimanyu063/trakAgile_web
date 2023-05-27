@@ -17,10 +17,11 @@ export class SiteComponent implements OnInit {
   fromDate: Date = new Date();
   toDate: Date = new Date();
   event: any = [];
-  events: any =[];
-  p: number = 1; // Current page number
-  pageSize: number = 10;
-  totalpage: number = 0;
+  events: any = [];
+  page: number = 1; // Current page number
+  tableSize: number = 10;
+  tableSizes: any = [5, 10, 15, 20];
+  count: number = 0;
   constructor(private SiteService: SiteService, private headerService: HeaderService, private datePipe: DatePipe) {
 
   }
@@ -40,8 +41,6 @@ export class SiteComponent implements OnInit {
       var todayDate = `${yyyy}-${mm}-${dd}`;
       this.SiteService.getAllSites('2023-05-01', todayDate, 0).subscribe((response: any) => {
         this.sites = response.data;
-        this.totalpage = response.total;
-        console.log(this.totalpage);
       });
     }
     catch (error) {
@@ -115,12 +114,7 @@ export class SiteComponent implements OnInit {
       console.log(error);
     }
   }
-  renderPage(event: number) {
-    this.p = event;
-    console.log(this.p);
-    this.getSites();
-  }
-  onChangeStatus(events: any){
+  onChangeStatus(events: any) {
     try {
       if (events.target.value == 0) {
         this.getSites()
@@ -174,5 +168,9 @@ export class SiteComponent implements OnInit {
     catch (error) {
       console.log(error);
     }
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getSites();
   }
 }

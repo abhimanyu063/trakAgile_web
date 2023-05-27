@@ -13,6 +13,10 @@ export class UserDetailsComponent implements OnInit {
   requests: any = []
   fromDate:Date= new Date();
   toDate:Date= new Date();
+  page: number = 1; // Current page number
+  tableSize: number = 10;
+  tableSizes: any = [5, 10, 15, 20];
+  count: number = 0;
   
   constructor(private userService: UserService, private datePipe:DatePipe, private headerService:HeaderService) {
 
@@ -31,6 +35,10 @@ export class UserDetailsComponent implements OnInit {
   onRefreshRequests()
   {
     console.log(this.fromDate);
+    this.getAllUsers();
+  }
+  onTableDataChange(event: any) {
+    this.page = event;
     this.getAllUsers();
   }
 }

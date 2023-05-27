@@ -7,18 +7,18 @@
             <div class="page-title-right">
               <form class="d-flex">
                 <div class="input-container c1">
-                <label class="item item-input item-select">
-                  <div class="input-label" style="margin-left: 100px;">
-                    Status
-                    <select (change)="onChangeStatus($event)">
-                      <option value="0">All</option>
-                      <option value="1">Completed</option>
-                      <option value="2">In-Progress</option>
-                      <option value="3">Reported Issue</option>
-                    </select>
-                  </div>
-                </label>
-              </div>
+                  <label class="item item-input item-select">
+                    <div class="input-label" style="margin-left: 100px;">
+                      Status
+                      <select (change)="onChangeStatus($event)">
+                        <option value="0">All</option>
+                        <option value="1">Completed</option>
+                        <option value="2">In-Progress</option>
+                        <option value="3">Reported Issue</option>
+                      </select>
+                    </div>
+                  </label>
+                </div>
                 <div class="input-container c2">
                   <div></div>
                   <label class="item item-input item-select">
@@ -78,7 +78,7 @@
                   </thead>
                   <tbody>
                     <tr
-                      *ngFor="let site of sites;let indexOfelement=index;  paginate: { itemsPerPage: pageSize, currentPage: p }">
+                      *ngFor="let site of sites  | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let indexOfelement=index">
                       <td>{{indexOfelement + 1}}</td>
                       <td>{{site.siteName}}</td>
                       <td>{{site.siteVillageName}}</td>
@@ -91,8 +91,8 @@
                   </tbody>
                 </table>
                 <div class="pagination">
-                  <pagination-controls [(ngModel)]="p" [maxSize]="5" [boundaryLinks]="true"
-                    (pageChange)="renderPage($event)"></pagination-controls>
+                  <pagination-controls previousLabel="Prev" nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)"></pagination-controls>
                 </div>
               </div>
             </div>
