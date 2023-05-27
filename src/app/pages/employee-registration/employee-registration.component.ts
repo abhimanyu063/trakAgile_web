@@ -11,12 +11,16 @@ import { UserService } from 'src/app/services/user.services';
 })
 export class EmployeeRegistrationComponent implements OnInit {
   userForm: FormGroup;
+  supervisors: any = [];
+  supervisorId: number = 0;
+  supervisor: any = [];
+  role: any = [];
+  roleId: number = 0;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(private userServie: UserService, private formGroup: FormBuilder, private matsnack: MatSnackBar, private headerService: HeaderService) {
-
-
+    this.getSupervisor();
   }
   ngOnInit(): void {
     //this.headerService.setHeaderVisibility(false);
@@ -30,11 +34,13 @@ export class EmployeeRegistrationComponent implements OnInit {
       city: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
-      roleId: 2,
+      roleId: [0, Validators.required],
+      supervisorId: [0, Validators.required],
       isActive: 1
     });
   }
   async onSaveUser() {
+    console.log(this.userForm.value);
     if (!this.userForm.invalid) {
       let validateUserNameEmail = await this.userServie.validateUserNameandEmail(this.userForm.value).toPromise();
       if (validateUserNameEmail.data == undefined) {
@@ -80,5 +86,28 @@ export class EmployeeRegistrationComponent implements OnInit {
         duration: 5000
       });
     }
+  }
+  async getSupervisor() {
+    try {
+      console.log('Test');
+      let result = await this.userServie.getSupervisor().toPromise();
+      this.supervisors = result.data;
+      console.log('result', result.data);
+
+
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+  selectSupervisor(supervisor: any) {
+    this.supervisorId = supervisor.target.value;
+    console.log(this.supervisorId);
+    this.userForm.value.supervisorId = supervisor.target.value;
+  }
+  selectRole(role: any) {
+    this.roleId = role.target.value;
+    console.log('role',this.roleId);
+    this.userForm.value.roleId = role.target.value;
   }
 }

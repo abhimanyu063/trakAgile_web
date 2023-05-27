@@ -36,7 +36,35 @@
                                         <div class="mb-3">
                                             <label for="example-password" class="form-label">Password*</label>
                                             <input type="password" id="example-password" class="form-control"
-                                            formControlName="password" value="">
+                                                formControlName="password" value="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" formControlName="roleId">
+                                                Role*
+                                                <div>
+                                                    <select (change)="selectRole($event)">
+                                                        <option value="0">Select</option>
+                                                        <option value="2">User</option>
+                                                        <option value="1">Admin</option>
+                                                        <option value="3">Supervisor</option>
+                                                    </select>
+                                                </div>
+
+                                            </label>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" formControlName="supervisorId">
+                                                Supervisor*
+                                                <div>
+                                                    <select (change)="selectSupervisor($event)">
+                                                        <option value="0">Select</option>
+                                                        <option *ngFor="let supervisor of supervisors"
+                                                            [value]="supervisor.supervisorId">{{supervisor.name}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                            </label>
                                         </div>
                                         <div class="mb-3">
                                             <label for="example-textarea" class="form-label">Address*</label>

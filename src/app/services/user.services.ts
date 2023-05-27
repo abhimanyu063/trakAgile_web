@@ -26,4 +26,8 @@ export class UserService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + `users/getOnlineUsers`);
     }
+    getSupervisor(): any {
+        const apiService = this.injector.get(ApiHttpService);
+        return apiService.get(AppConfig.apiBaseUrl + `users/getSupervisor`);
+    }
 }
