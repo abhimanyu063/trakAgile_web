@@ -32,6 +32,7 @@ import { UserDetailsComponent} from './pages/user-details/userdetails.component'
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ChangePasswordService } from './services/changepassword.services';
 import { OnlineUserComponent } from './pages/online-user/online-user.component';
+import { SiteReportedComponent } from './pages/site-reported/site-reported.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
@@ -50,7 +51,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ForgetPasswordComponent,
     UserDetailsComponent,
     ChangePasswordComponent,
-    OnlineUserComponent
+    OnlineUserComponent,
+    SiteReportedComponent
   ],
   imports: [
     BrowserModule,

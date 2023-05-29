@@ -77,6 +77,7 @@ export class SiteComponent implements OnInit {
   onChange(event: any) {
     try {
       if (event.target.value == 0) {
+        this.page = event;
         this.getSites()
       }
       else if (event.target.value == 1) {
@@ -91,6 +92,7 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites(weeklyDate, todayDate, 0).subscribe((response: any) => {
+          this.page = event;
           this.sites = response.data;
         });
       }
@@ -106,6 +108,7 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var monthlyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites(monthlyDate, todayDate, 0).subscribe((response: any) => {
+          this.page = event;
           this.sites = response.data;
         });
       }
@@ -131,6 +134,7 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites('2023-05-01', todayDate, 1).subscribe((response: any) => {
+          this.page = events;
           this.sites = response.data;
         });
       }
@@ -146,21 +150,7 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var monthlyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites('2023-05-01', todayDate, 2).subscribe((response: any) => {
-          this.sites = response.data;
-        });
-      }
-      else if (events.target.value == 3) {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        var todayDate = `${yyyy}-${mm}-${dd}`;
-        var date = new Date();
-        var dd = String(today.getDate() - 30).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        var monthlyDate = `${yyyy}-${mm}-${dd}`;
-        this.SiteService.getAllSites('2023-05-01', todayDate, 3).subscribe((response: any) => {
+          this.page = events;
           this.sites = response.data;
         });
       }

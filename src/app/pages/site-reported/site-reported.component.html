@@ -1,0 +1,65 @@
+<div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box">
+              <div class="page-title-right">
+                <form class="d-flex">
+                  <!-- <div class="input-group text-center" style="vertical-align:middle">
+                    <span class="label label-info text-center">From</span>
+                  </div> -->
+                  <!-- <a href="javascript: void(0);" class="btn btn-primary ms-2" (click)="onRefreshRequests()">
+                    <i class="ri-refresh-line"></i>
+                  </a> -->
+                </form>
+              </div>
+              <h4 class="page-title">Site Reported Issue</h4>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-lg-12" style="text-align:right; align-items:right">
+            <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+        </div>
+        </div> -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <p class="text-muted fs-14">
+                <div class="table-responsive" id="requestReport">
+                  <table class="table table-hove rtable">
+                    <thead>
+                      <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Name </th>
+                        <th scope="col">Site Name</th>
+                        <th scope="col">Site Village Name</th>
+                        <th scope="col">Created On</th>
+                        <th scope="col">Comments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let request of requests  | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let indexOfelement =index">
+                        <td scope="row">{{indexOfelement + 1}}</td>
+                        <td>{{request.name}}</td>
+                        <td>{{request.siteName}}</td>
+                        <td>{{request.siteVillageName}}</td>
+                        <td>{{request.createdOn|date:'dd-MM-yyyy'}}</td>
+                        <td>{{request.comment}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="pagination">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next"
+                      (pageChange)="onTableDataChange($event)"></pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
