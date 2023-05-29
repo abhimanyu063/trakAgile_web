@@ -9,8 +9,8 @@ export class EmployeeTrackingComponent {
   zoom: number = 8;
   
   // initial center position for the map
-  lat: number = 51.673858;
-  lng: number = 7.815982;
+  lat: number = 12.9698;
+  lng: number = 77.7500;
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -22,8 +22,8 @@ export class EmployeeTrackingComponent {
   
   markers: marker[] = [
 	  {
-		  lat: 51.673858,
-		  lng: 7.815982,
+		  lat: 12.9698,
+		  lng: 77.7500,
 		  label: 'A',
 		  draggable: true
 	  }

@@ -62,7 +62,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
-      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
+      apiKey: 'AIzaSyDgt6Ba2xhg1XL3ouDW_Ok_-GstYpQrCzk'
     }),
 
   ],
