@@ -28,11 +28,12 @@ import { ForgetPasswordComponent } from './pages/forget-password/forget-password
 import { DatePipe } from '@angular/common';
 import { HeaderService } from './services/header.services';
 import { ForgetPasswordService } from './services/forgetpassword.services';
-import { UserDetailsComponent} from './pages/user-details/userdetails.component';
+import { UserDetailsComponent } from './pages/user-details/userdetails.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ChangePasswordService } from './services/changepassword.services';
 import { OnlineUserComponent } from './pages/online-user/online-user.component';
 import { SiteReportedComponent } from './pages/site-reported/site-reported.component';
+import { SharedService } from './services/shared.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
@@ -63,10 +64,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
     }),
-    
+
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService, SharedService],
   bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

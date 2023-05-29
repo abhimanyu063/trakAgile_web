@@ -6,7 +6,7 @@ import { AppConfig } from "../appconfig";
 export class ChangePasswordService {
     constructor(private injector: Injector) {
     }
-    onChangePassword(userData: any): any {
+    changePassword(userData: any): any {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.post(AppConfig.apiBaseUrl + `users/changePassword`, userData);
     }

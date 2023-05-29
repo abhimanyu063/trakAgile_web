@@ -20,6 +20,6 @@ export class SiteService {
     }
     getAllSiteReportedIsuue(): any {
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.get(AppConfig.apiBaseUrl + `users/getSiteReportedIssueDetails`);
+        return apiService.get(AppConfig.apiBaseUrl + `sites/getSiteReportedIsuueDetails`);
     }
 }
