@@ -16,12 +16,13 @@ export class ChangePasswordComponent implements OnInit {
     horizontalPosition: MatSnackBarHorizontalPosition = 'center';
     verticalPosition: MatSnackBarVerticalPosition = 'top';
     userId: Number;
+    //responses: any[];
 
-    constructor(private ChangePasswordServices: ChangePasswordService, private formGroup: FormBuilder, private sharedService: SharedService, private matsnack: MatSnackBar, private headerService: HeaderService, private formBuilder: FormBuilder) {
+    constructor(private ChangePasswordServices: ChangePasswordService, private router: Router, private formGroup: FormBuilder, private sharedService: SharedService, private matsnack: MatSnackBar, private headerService: HeaderService, private formBuilder: FormBuilder) {
     }
     ngOnInit(): void {
         this.userId = Number(this.sharedService.getUserId());
-        this.changePasswordForm = this.formBuilder.group({
+        this.changePasswordForm = this.formGroup.group({
             userId: this.userId,
             oldPassword: ['', Validators.required],
             newPassword: ['', Validators.required],
@@ -29,10 +30,8 @@ export class ChangePasswordComponent implements OnInit {
             roleId: 2,
             isActive: 1
         });
-        console.log(this.userId);
     }
-    async changePassword() {
-        console.log(this.userId);
+    async onChangePassword() {
         let payload = {
             userId: this.userId,
             oldPassword: this.changePasswordForm.value.oldPassword.trim(),
@@ -40,24 +39,23 @@ export class ChangePasswordComponent implements OnInit {
         }
         if (payload.oldPassword !== "" && payload.newPassword !== "" && this.changePasswordForm.value.confirmPassword.trim() !== "") {
             if (payload.newPassword === this.changePasswordForm.value.confirmPassword.trim()) {
-                const response = await this.ChangePasswordServices.changePassword(payload);
-                if (response.success) {
-                    this.matsnack.open("User registered successfully.", 'Dismiss', {
-                        horizontalPosition: this.horizontalPosition,
-                        verticalPosition: this.verticalPosition,
-                        duration: 5000
-                        //this.router.navigate(['/login']);
-                    });
-                    this.changePasswordForm.reset();
-                }
-                else {
-                    this.matsnack.open("Old password is incorrect.", 'Dismiss', {
-                        horizontalPosition: this.horizontalPosition,
-                        verticalPosition: this.verticalPosition,
-                        duration: 5000
-                    });
-                    this.changePasswordForm.reset();
-                }
+                const response = await this.ChangePasswordServices.changePassword(payload).subscribe((response: any) => {
+                    if (response.success) {
+                        this.matsnack.open("Password has been changed successfully.", 'Dismiss', {
+                            horizontalPosition: this.horizontalPosition,
+                            verticalPosition: this.verticalPosition,
+                            duration: 5000
+                        });
+                        this.router.navigate(['/login']);
+                    }
+                    else {
+                        this.matsnack.open("Old password is incorrect.", 'Dismiss', {
+                            horizontalPosition: this.horizontalPosition,
+                            verticalPosition: this.verticalPosition,
+                            duration: 5000
+                        });
+                    }
+                });
             }
             else {
                 this.matsnack.open("New password and Confirm password does not match.", 'Dismiss', {
@@ -65,7 +63,6 @@ export class ChangePasswordComponent implements OnInit {
                     verticalPosition: this.verticalPosition,
                     duration: 5000
                 });
-                this.changePasswordForm.reset();
             }
         }
         else {
