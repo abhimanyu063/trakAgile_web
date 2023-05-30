@@ -29,16 +29,18 @@ export class EmployeeRegistrationComponent implements OnInit {
       password: ['', Validators.required],
       name: ['', Validators.required],
       email: ['', Validators.required],
-      mobile: ['', Validators.required],
+      mobile: ['', [Validators.required, Validators.pattern("^[0-9]*$"), 
+      Validators.minLength(10), Validators.maxLength(10)]],
       address: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
       country: ['', Validators.required],
       roleId: [0, Validators.required],
       supervisorId: [0, Validators.required],
-      isActive: 1
+      isActive: 1,
     });
   }
+  get mob() { return this.userForm.controls };
   async onSaveUser() {
     console.log(this.userForm.value);
     if (!this.userForm.invalid) {
@@ -109,5 +111,12 @@ export class EmployeeRegistrationComponent implements OnInit {
     this.roleId = role.target.value;
     console.log('role',this.roleId);
     this.userForm.value.roleId = role.target.value;
+  }
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 }

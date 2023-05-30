@@ -6,41 +6,47 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Employee Registration</h4>
+                            <!-- <h4 class="header-title">Employee Registration</h4> -->
                             <br>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
-                                        <div class="mb-3">
-                                            <label for="example-username" class="form-label">User Name*</label>
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-username" class="form-label">User Name<span style="color: red;">*</span></label>
                                             <input type="text" id="example-username" class="form-control"
                                                 formControlName="userName">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="example-name" class="form-label">Name*</label>
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-name" class="form-label">Name<span style="color: red;">*</span></label>
                                             <input type="text" id="example-name" class="form-control"
                                                 formControlName="name">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="example-email" class="form-label">Email*</label>
-                                            <input type="email" id="example-email" name="example-email"
-                                                class="form-control" placeholder="Email" formControlName="email">
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-email" class="form-label">Email<span style="color: red;">*</span></label>
+                                            <input required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                                                type="email" id="example-email" name="example-email"
+                                                class="form-control" placeholder="Email">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="password" class="form-label">Mobile No.*</label>
-                                            <input type="text" id="example-email" class="form-control"
-                                                formControlName="mobile">
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="mobile" class="form-label">Mobile No.<span style="color: red;">*</span></label>
+                                            <input (keypress)="keyPress($event)" required type="text" id="example-mobile"
+                                                class="form-control" formControlName="mobile">
+                                            <!-- <div
+                                                *ngIf="mob.mobile.errors.pattern || mob.mobile.errors.maxlength || mob.mobile.errors.minlength">
+                                                Mobile number should be 10 digit.
+                                            </div> -->
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="example-password" class="form-label">Password*</label>
+
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-password" class="form-label">Password<span style="color: red;">*</span></label>
                                             <input type="password" id="example-password" class="form-control"
                                                 formControlName="password" value="">
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="width: 300px;">
                                             <label class="form-label" formControlName="roleId">
-                                                Role*
+                                                Role<span style="color: red;">*</span>
                                                 <div>
                                                     <select (change)="selectRole($event)">
                                                         <option value="0">Select</option>
@@ -52,9 +58,9 @@
 
                                             </label>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="width: 300px;">
                                             <label class="form-label" formControlName="supervisorId">
-                                                Supervisor*
+                                                Supervisor<span style="color: red;">*</span>
                                                 <div>
                                                     <select (change)="selectSupervisor($event)">
                                                         <option value="0">Select</option>
@@ -66,24 +72,24 @@
 
                                             </label>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="example-textarea" class="form-label">Address*</label>
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-textarea" class="form-label">Address<span style="color: red;">*</span></label>
                                             <textarea class="form-control" id="example-textarea" rows="2"
                                                 formControlName="address"></textarea>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="example-City" class="form-label">City*</label>
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-City" class="form-label">City<span style="color: red;">*</span></label>
                                             <input type="text" id="example-City" name="example-City"
                                                 class="form-control" placeholder="" formControlName="city">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="example-State" class="form-label">State*</label>
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-State" class="form-label">State<span style="color: red;">*</span></label>
                                             <input type="text" id="example-State" name="example-State"
                                                 class="form-control" placeholder="" formControlName="state">
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="example-Country" class="form-label">Country*</label>
+                                        <div class="mb-3" style="width: 300px;">
+                                            <label for="example-Country" class="form-label">Country<span style="color: red;">*</span></label>
                                             <input type="text" id="example-Country" name="example-Country"
                                                 class="form-control" placeholder="" formControlName="country">
                                         </div>
