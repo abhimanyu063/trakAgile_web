@@ -54,6 +54,7 @@ export class ChangePasswordComponent implements OnInit {
                             verticalPosition: this.verticalPosition,
                             duration: 5000
                         });
+                        this.changePasswordForm.reset();
                     }
                 });
             }
@@ -63,6 +64,7 @@ export class ChangePasswordComponent implements OnInit {
                     verticalPosition: this.verticalPosition,
                     duration: 5000
                 });
+                this.changePasswordForm.reset();
             }
         }
         else {
@@ -71,6 +73,7 @@ export class ChangePasswordComponent implements OnInit {
                 verticalPosition: this.verticalPosition,
                 duration: 5000
             });
+            this.changePasswordForm.reset();
         }
     }
 }
