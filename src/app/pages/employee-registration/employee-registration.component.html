@@ -32,7 +32,7 @@
                                         <div class="mb-3" style="width: 300px;">
                                             <label for="mobile" class="form-label">Mobile No.<span style="color: red;">*</span></label>
                                             <input (keypress)="keyPress($event)" required type="text" id="example-mobile"
-                                                class="form-control" formControlName="mobile">
+                                                class="form-control" formControlName="mobile" maxlength="10" minlength="10">
                                             <!-- <div
                                                 *ngIf="mob.mobile.errors.pattern || mob.mobile.errors.maxlength || mob.mobile.errors.minlength">
                                                 Mobile number should be 10 digit.
