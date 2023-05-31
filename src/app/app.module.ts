@@ -35,6 +35,8 @@ import { OnlineUserComponent } from './pages/online-user/online-user.component';
 import { SiteReportedComponent } from './pages/site-reported/site-reported.component';
 import { SharedService } from './services/shared.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AgmDirectionModule } from 'agm-direction';
+import { LocationService } from './services/location.services';
 
 
 
@@ -60,13 +62,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppRoutingModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule,
     AppMaterialModule, FormsModule, NgxPaginationModule,
     AgmCoreModule.forRoot({
-      // please get your own API key here:
-      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
       apiKey: 'AIzaSyDgt6Ba2xhg1XL3ouDW_Ok_-GstYpQrCzk'
     }),
-
+    AgmDirectionModule
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService, SharedService],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService, SharedService, LocationService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
