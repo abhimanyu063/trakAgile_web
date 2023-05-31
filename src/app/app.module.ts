@@ -37,6 +37,8 @@ import { SharedService } from './services/shared.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AgmDirectionModule } from 'agm-direction';
 import { LocationService } from './services/location.services';
+import { EmployeeHierarchyComponent } from './pages/employee-hierarchy/employee-hierarchy.component';
+import { NgxOrgChartModule } from 'ngx-org-chart';
 
 
 
@@ -55,7 +57,8 @@ import { LocationService } from './services/location.services';
     UserDetailsComponent,
     ChangePasswordComponent,
     OnlineUserComponent,
-    SiteReportedComponent
+    SiteReportedComponent,
+    EmployeeHierarchyComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { LocationService } from './services/location.services';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDgt6Ba2xhg1XL3ouDW_Ok_-GstYpQrCzk'
     }),
-    AgmDirectionModule
+    AgmDirectionModule, 
+    NgxOrgChartModule
   ],
   providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService, SharedService, LocationService],
   bootstrap: [AppComponent],

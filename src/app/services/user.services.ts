@@ -30,4 +30,8 @@ export class UserService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + `users/getSupervisor`);
     }
+    getUserHierarchy(): any {
+        const apiService = this.injector.get(ApiHttpService);
+        return apiService.get(AppConfig.apiBaseUrl + `users/getuserhierarchy`);
+    }
 }

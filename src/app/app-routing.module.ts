@@ -12,6 +12,7 @@ import { UserDetailsComponent } from './pages/user-details/userdetails.component
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { OnlineUserComponent } from './pages/online-user/online-user.component';
 import { SiteReportedComponent } from './pages/site-reported/site-reported.component';
+import { EmployeeHierarchyComponent } from './pages/employee-hierarchy/employee-hierarchy.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'online-user', component: OnlineUserComponent },
   { path: 'site-reported', component: SiteReportedComponent },
-  
+  { path: 'employee-hierarchy', component: EmployeeHierarchyComponent, canActivate:[AuthGuard] },
   
 ];
 

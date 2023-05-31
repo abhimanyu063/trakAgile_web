@@ -42,7 +42,7 @@ export class EmployeeRegistrationComponent implements OnInit {
   }
   get mob() { return this.userForm.controls };
   async onSaveUser() {
-    console.log(this.userForm.value);
+    console.log(this.userForm);
     if (!this.userForm.invalid) {
       let validateUserNameEmail = await this.userServie.validateUserNameandEmail(this.userForm.value).toPromise();
       if (validateUserNameEmail.data == undefined) {
@@ -91,7 +91,6 @@ export class EmployeeRegistrationComponent implements OnInit {
   }
   async getSupervisor() {
     try {
-      console.log('Test');
       let result = await this.userServie.getSupervisor().toPromise();
       this.supervisors = result.data;
       console.log('result', result.data);

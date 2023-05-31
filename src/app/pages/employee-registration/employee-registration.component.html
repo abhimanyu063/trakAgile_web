@@ -24,9 +24,9 @@
 
                                         <div class="mb-3" style="width: 300px;">
                                             <label for="example-email" class="form-label">Email<span style="color: red;">*</span></label>
-                                            <input required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                                            <input required
                                                 type="email" id="example-email" name="example-email"
-                                                class="form-control">
+                                                class="form-control" formControlName="email">
                                         </div>
 
                                         <div class="mb-3" style="width: 300px;">
@@ -45,10 +45,10 @@
                                                 formControlName="password" value="">
                                         </div>
                                         <div class="mb-3" style="width: 300px;">
-                                            <label class="form-label" formControlName="roleId">
+                                            <label class="form-label">
                                                 Role<span style="color: red;">*</span>
                                                 <div>
-                                                    <select (change)="selectRole($event)">
+                                                    <select formControlName="roleId">
                                                         <option value="0">Select</option>
                                                         <option value="2">User</option>
                                                         <option value="1">Admin</option>
@@ -59,13 +59,13 @@
                                             </label>
                                         </div>
                                         <div class="mb-3" style="width: 300px;">
-                                            <label class="form-label" formControlName="supervisorId">
+                                            <label class="form-label">
                                                 Supervisor<span style="color: red;">*</span>
                                                 <div>
-                                                    <select (change)="selectSupervisor($event)">
+                                                    <select formControlName="supervisorId">
                                                         <option value="0">Select</option>
                                                         <option *ngFor="let supervisor of supervisors"
-                                                            [value]="supervisor.supervisorId">{{supervisor.name}}
+                                                            [value]="supervisor.userId">{{supervisor.name}}
                                                         </option>
                                                     </select>
                                                 </div>
