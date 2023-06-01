@@ -52,7 +52,7 @@ export class EmployeeRegistrationComponent implements OnInit {
           verticalPosition: this.verticalPosition,
           duration: 5000
         });
-        this.userForm.reset();
+        this.clearForm()
       }
       else {
         if (validateUserNameEmail.data.userName.trim() == this.userForm.value.userName.trim()) {
@@ -61,7 +61,7 @@ export class EmployeeRegistrationComponent implements OnInit {
             verticalPosition: this.verticalPosition,
             duration: 5000
           });
-          this.userForm.value.userName = [''];
+          this.userForm.get('userName')?.reset();
         }
         else if (validateUserNameEmail.data.email.trim() == this.userForm.value.email.trim()) {
           this.matsnack.open("This email " + validateUserNameEmail.data.email + " is already registered, Please try another email.", 'Dismiss', {
@@ -69,7 +69,7 @@ export class EmployeeRegistrationComponent implements OnInit {
             verticalPosition: this.verticalPosition,
             duration: 5000
           });
-          this.userForm.value.userName = [''];
+          this.userForm.get('email')?.reset();
         }
         else if (validateUserNameEmail.data.mobile.trim() == this.userForm.value.mobile.trim()) {
           this.matsnack.open("This mobile number " + validateUserNameEmail.data.mobile + " is already registered, Please try another mobile number.", 'Dismiss', {
@@ -77,7 +77,7 @@ export class EmployeeRegistrationComponent implements OnInit {
             verticalPosition: this.verticalPosition,
             duration: 5000
           });
-          this.userForm.value.userName = [''];
+          this.userForm.get('mobile')?.reset();
         }
       }
     }
@@ -93,9 +93,6 @@ export class EmployeeRegistrationComponent implements OnInit {
     try {
       let result = await this.userServie.getSupervisor().toPromise();
       this.supervisors = result.data;
-      console.log('result', result.data);
-
-
     }
     catch (error) {
       console.log(error);
@@ -117,5 +114,18 @@ export class EmployeeRegistrationComponent implements OnInit {
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
       event.preventDefault();
     }
+  }
+  clearForm(){
+    this.userForm.get('userName')?.reset();
+    this.userForm.get('password')?.reset();
+    this.userForm.get('name')?.reset();
+    this.userForm.get('email')?.reset();
+    this.userForm.get('mobile')?.reset();
+    this.userForm.get('address')?.reset(); 
+    this.userForm.get('city')?.reset();
+    this.userForm.get('state')?.reset(); 
+    this.userForm.get('country')?.reset();
+    this.userForm.get('roleId')?.reset(0);
+    this.userForm.get('supervisorId')?.reset(0);
   }
 }
