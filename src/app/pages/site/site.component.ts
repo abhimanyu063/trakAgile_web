@@ -134,7 +134,6 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites('2023-05-01', todayDate, 1).subscribe((response: any) => {
-          this.page = events;
           this.sites = response.data;
         });
       }
@@ -150,7 +149,6 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var monthlyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites('2023-05-01', todayDate, 2).subscribe((response: any) => {
-          this.page = events;
           this.sites = response.data;
         });
       }
