@@ -63,7 +63,7 @@
                   </thead>
                   <tbody *ngFor="let request of requests | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count };let indexOfelement=index;">
                     <tr>
-                      <td scope="row">{{indexOfelement + 1}}</td>
+                      <td scope="row">{{(page - 1) * 10 + indexOfelement +1}}</td>
                       <td>{{request.requestByUserName}}</td>
                       <td>{{request.requestTypeDescription}}</td>
                       <td>{{request.requestDate|date:'dd-MM-yyyy'}}</td>

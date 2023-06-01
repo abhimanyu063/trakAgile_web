@@ -81,7 +81,7 @@
                   <tbody>
                     <tr
                       *ngFor="let site of sites  | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let indexOfelement=index">
-                      <td>{{indexOfelement + 1}}</td>
+                      <td>{{(page - 1) * 10 + indexOfelement +1}}</td>
                       <td>{{site.siteName}}</td>
                       <td>{{site.siteVillageName}}</td>
                       <td>{{site.districtName}}</td>

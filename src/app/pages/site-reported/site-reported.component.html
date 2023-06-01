@@ -42,7 +42,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let request of requests  | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let indexOfelement =index">
-                        <td scope="row">{{indexOfelement + 1}}</td>
+                        <td scope="row">{{(page - 1) * 10 + indexOfelement +1}}</td>
                         <td>{{request.name}}</td>
                         <td>{{request.siteName}}</td>
                         <td>{{request.siteVillageName}}</td>
