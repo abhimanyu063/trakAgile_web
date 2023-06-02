@@ -1,7 +1,61 @@
 <div class="content-page" style="margin-top:50px">
   <div class="content">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <form class="d-flex">
+                <div class="form-container c1">
+                  <label class="item item-input item-select">
+                    <div class="input-label" style="margin-left: 100px;">
+                      User
+                      <select (change)="onChangeUser($event)">
+                        <option value="0">All</option>
+                        <option *ngFor="let user of distinctOnlineUsers" [value]="user">{{user}}</option>
+                      </select>
+                    </div>
+                  </label>
+                </div>
+                <div *ngIf="!isAllUser" class="form-container c1">
+                  <label class="item item-input item-select">
+                    <div class="input-label" style="margin-left: 100px;">
+                      Distance : {{distance}} KM
+                    </div>
+                  </label>
+                </div>
+              </form>
+            </div>
+            <h4 class="page-title">Employee Tracking</h4>
+          </div>
+        </div>
+      </div>
+    </div>
     <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-direction *ngFor="let dir of direction" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
-  </agm-map>
+      <div *ngIf="!isAllUser">
+        <!-- below marker shows starting point -->
+        <agm-marker *ngIf="dir" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng"></agm-marker>
+        <!-- below marker shows current location -->
+        <agm-marker *ngIf="dir" [latitude]="dir.destination.lat" [longitude]="dir.destination.lng"
+        [iconUrl]="desIcon"></agm-marker>
+        <!-- below markers show sites visited -->
+        <agm-marker *ngFor="let marker of siteMarkers" [latitude]="marker.origin.lat" [longitude]="marker.origin.lng" (markerClick)="openWindow(marker.locationId)">
+          <agm-info-window [isOpen]="isInfoWindowOpen(marker.locationId)" [latitude]="marker.origin.lat"
+          [longitude]="marker.origin.lng">{{marker.siteName}}</agm-info-window>
+        </agm-marker>
+        <!-- below direction shows user travelled distance -->
+        <agm-direction *ngFor="let dir of direction" [origin]="dir.origin" [destination]="dir.destination"
+          [renderOptions]="{suppressMarkers: true}"></agm-direction>
+      </div>
+      <div *ngIf="isAllUser">
+        <!-- below marker shows current location of all users -->
+        <agm-marker *ngFor="let dir of direction" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng"
+          (markerClick)="openWindow(dir.locationId)">
+          <agm-info-window [isOpen]="isInfoWindowOpen(dir.locationId)" [latitude]="dir.origin.lat"
+            [longitude]="dir.origin.lng">{{dir.name}}</agm-info-window>
+        </agm-marker>
+      </div>
+    </agm-map>
   </div>
 </div>
