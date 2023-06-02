@@ -77,7 +77,6 @@ export class SiteComponent implements OnInit {
   onChange(event: any) {
     try {
       if (event.target.value == 0) {
-        this.page = event;
         this.getSites()
       }
       else if (event.target.value == 1) {
@@ -92,7 +91,6 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites(weeklyDate, todayDate, 0).subscribe((response: any) => {
-          this.page = event;
           this.sites = response.data;
         });
       }
@@ -108,7 +106,6 @@ export class SiteComponent implements OnInit {
         var yyyy = today.getFullYear();
         var monthlyDate = `${yyyy}-${mm}-${dd}`;
         this.SiteService.getAllSites(monthlyDate, todayDate, 0).subscribe((response: any) => {
-          this.page = event;
           this.sites = response.data;
         });
       }

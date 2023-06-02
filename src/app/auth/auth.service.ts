@@ -24,6 +24,8 @@ export class AuthService {
     let result = await this.userService.onValidateAdmin(user).toPromise();
     if (result.success) {
       this.sharedService.setUserId(result.data.userId);
+      this.sharedService.setLoginUserId(result.data.supervisorId);
+      console.log(this.sharedService.getLoginUserId());
       this.loggedIn.next(true);
       this.router.navigate(['/']);
     }

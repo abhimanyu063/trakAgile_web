@@ -8,6 +8,12 @@ export class SharedService {
     public setUserId(userId: any) {
         localStorage.setItem("userId", userId);
     }
+    public setLoginUserId(supervisorId: any) {
+        localStorage.setItem("supervisorId", supervisorId);
+    }
+    public getLoginUserId() : any {
+        return localStorage.getItem("supervisorId");
+    }
     public getUserId(): any {
         return localStorage.getItem("userId");
     }
