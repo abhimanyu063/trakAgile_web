@@ -52,7 +52,8 @@ export class EmployeeRegistrationComponent implements OnInit {
           verticalPosition: this.verticalPosition,
           duration: 5000
         });
-        this.clearForm()
+        this.clearForm();
+        this.getSupervisor();
       }
       else {
         if (validateUserNameEmail.data.userName.trim() == this.userForm.value.userName.trim()) {
