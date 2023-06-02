@@ -18,9 +18,10 @@ export class UserService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.post(AppConfig.apiBaseUrl + `users/validateUserNameEmailAndMobile`, userData);
     }
-    getAllUsers(): any {
+    getAllUsers(userId: any) {
+        console.log(userId);
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.get(AppConfig.apiBaseUrl + `users/getUsers`);
+        return apiService.get(AppConfig.apiBaseUrl + `users/getUsers/${userId}`);
     }
     getOnlineUsers(): any {
         const apiService = this.injector.get(ApiHttpService);
