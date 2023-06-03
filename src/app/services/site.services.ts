@@ -22,4 +22,8 @@ export class SiteService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + `sites/getSiteReportedIsuueDetails`);
     }
+    getImage(siteWorkId: number): any {
+        const apiService = this.injector.get(ApiHttpService);
+        return apiService.get(AppConfig.apiBaseUrl + `sites/getImage/${siteWorkId}`);
+    }
 }

@@ -4,6 +4,10 @@ import { SiteService } from 'src/app/services/site.services';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { DatePipe } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from 'src/app/components/popup/popup.component';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-site',
@@ -22,7 +26,10 @@ export class SiteComponent implements OnInit {
   tableSize: number = 10;
   tableSizes: any = [5, 10, 15, 20];
   count: number = 0;
-  constructor(private SiteService: SiteService, private headerService: HeaderService, private datePipe: DatePipe) {
+  image: any;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  constructor(private SiteService: SiteService, private headerService: HeaderService, private datePipe: DatePipe, private sanitizer: DomSanitizer, public dialogRef: MatDialog, private matsnack: MatSnackBar) {
 
   }
   ngOnInit(): void {
@@ -31,6 +38,21 @@ export class SiteComponent implements OnInit {
     this.toDate.setDate(this.toDate.getDate() - 10);
     this.getSites();
   }
+  openDialog(siteWorkId: number) {
+    this.image = "";
+
+    this.SiteService.getImage(siteWorkId).subscribe((response: any) => {
+      if (response.success) {
+        const b64Data = btoa(String.fromCharCode.apply(null, response.data));
+        this.image = this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + b64Data);
+        const siteName = this.sites.find((x: any) => x.siteWorkId == siteWorkId).siteName;
+        this.dialogRef.open(PopupComponent, {
+          data: { image: this.image, siteName: siteName },
+        });
+      }
+    });
+  }
+
   getSites() {
     try {
       var today = new Date();

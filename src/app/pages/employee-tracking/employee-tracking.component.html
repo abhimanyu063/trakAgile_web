@@ -32,17 +32,19 @@
         </div>
       </div>
     </div>
-    <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
       <div *ngIf="!isAllUser">
         <!-- below marker shows starting point -->
-        <agm-marker *ngIf="dir" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng"></agm-marker>
+        <agm-marker *ngIf="dir" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng"
+          [iconUrl]="originIcon"></agm-marker>
         <!-- below marker shows current location -->
         <agm-marker *ngIf="dir" [latitude]="dir.destination.lat" [longitude]="dir.destination.lng"
-        [iconUrl]="desIcon"></agm-marker>
+          [iconUrl]="liveIcon"></agm-marker>
         <!-- below markers show sites visited -->
-        <agm-marker *ngFor="let marker of siteMarkers" [latitude]="marker.origin.lat" [longitude]="marker.origin.lng" (markerClick)="openWindow(marker.locationId)">
+        <agm-marker *ngFor="let marker of siteMarkers" [latitude]="marker.origin.lat" [longitude]="marker.origin.lng"
+          (markerClick)="openWindow(marker.locationId)">
           <agm-info-window [isOpen]="isInfoWindowOpen(marker.locationId)" [latitude]="marker.origin.lat"
-          [longitude]="marker.origin.lng">{{marker.siteName}}</agm-info-window>
+            [longitude]="marker.origin.lng">{{marker.siteName}}</agm-info-window>
         </agm-marker>
         <!-- below direction shows user travelled distance -->
         <agm-direction *ngFor="let dir of direction" [origin]="dir.origin" [destination]="dir.destination"
@@ -51,7 +53,7 @@
       <div *ngIf="isAllUser">
         <!-- below marker shows current location of all users -->
         <agm-marker *ngFor="let dir of direction" [latitude]="dir.origin.lat" [longitude]="dir.origin.lng"
-          (markerClick)="openWindow(dir.locationId)">
+          (markerClick)="openWindow(dir.locationId)" [iconUrl]="liveIcon">
           <agm-info-window [isOpen]="isInfoWindowOpen(dir.locationId)" [latitude]="dir.origin.lat"
             [longitude]="dir.origin.lng">{{dir.name}}</agm-info-window>
         </agm-marker>

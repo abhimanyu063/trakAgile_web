@@ -39,6 +39,8 @@ import { AgmDirectionModule } from 'agm-direction';
 import { LocationService } from './services/location.services';
 import { EmployeeHierarchyComponent } from './pages/employee-hierarchy/employee-hierarchy.component';
 import { NgxOrgChartModule } from 'ngx-org-chart';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { PopupComponent } from './components/popup/popup.component';
 
 
 
@@ -58,19 +60,21 @@ import { NgxOrgChartModule } from 'ngx-org-chart';
     ChangePasswordComponent,
     OnlineUserComponent,
     SiteReportedComponent,
-    EmployeeHierarchyComponent
+    EmployeeHierarchyComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule,
-    AppMaterialModule, FormsModule, NgxPaginationModule,
+    AppMaterialModule, FormsModule, NgxPaginationModule, MatDialogModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDgt6Ba2xhg1XL3ouDW_Ok_-GstYpQrCzk'
+      apiKey: 'AIzaSyDgt6Ba2xhg1XL3ouDW_Ok_-GstYpQrCzk',
+      libraries: ['geometry']
     }),
-    AgmDirectionModule, 
+    AgmDirectionModule,
     NgxOrgChartModule
   ],
-  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService, SharedService, LocationService],
+  providers: [SiteService, ApiHttpService, HttpClient, RequestService, AuthService, AuthGuard, DashboardService, UserService, MatSnackBar, DatePipe, HeaderService, ForgetPasswordService, ChangePasswordService, SharedService, LocationService, { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -89,7 +89,7 @@
                       <td>{{site.siteTypeDescription}}</td>
                       <td>{{site.createdOn|date:'dd-MM-yyyy'}}</td>
                       <td>{{site.name}}</td>
-                      <td><a href="#link" class="row-link">Image</a></td>
+                      <td><a *ngIf="site.isWorkCompleted===1" style="cursor: pointer;" (click)="openDialog(site.siteWorkId)" class="row-link">View</a></td>
                       <td>{{0 +" KM"}}</td>
                     </tr>
                   </tbody>

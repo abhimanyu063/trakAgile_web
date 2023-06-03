@@ -11,7 +11,7 @@ export class EmployeeTrackingComponent implements OnInit {
   onlineUsers: any = [];
   distinctOnlineUsers: any = [];
   dir: any;
-  zoom: number = 14;
+  zoom: number = 10;
   direction: any = [];
   siteMarkers: any = [];
   userId: number = 0;
@@ -26,8 +26,8 @@ export class EmployeeTrackingComponent implements OnInit {
   // renderOptions = {
   //   suppressMarkers: true
   // }
-  // orinIcon = 'http://image.ibb.co/bZ3wLn/origin.png';
-  desIcon = '../../../assets/images/live.gif';
+  originIcon = '../../../assets/images/origin.png';
+  liveIcon = '../../../assets/images/live.gif';
 
   constructor(private locationService: LocationService, private userService: UserService) {
 
@@ -59,6 +59,7 @@ export class EmployeeTrackingComponent implements OnInit {
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
+
   getDistance = async (distance: any) => {
     var origin = new google.maps.LatLng(distance.origin.lat, distance.origin.lng);
     var destination = new google.maps.LatLng(distance.destination.lat, distance.destination.lng);
@@ -90,6 +91,13 @@ export class EmployeeTrackingComponent implements OnInit {
         }
       }
     }
+  }
+
+  calculateDistance(distance: any) {
+    var origin = new google.maps.LatLng(distance.origin.lat, distance.origin.lng);
+    var destination = new google.maps.LatLng(distance.destination.lat, distance.destination.lng);
+    const dis = google.maps.geometry.spherical.computeDistanceBetween(origin, destination);
+    console.log(dis);
   }
 
 
@@ -127,7 +135,7 @@ export class EmployeeTrackingComponent implements OnInit {
             origin: { lat: parseFloat(element.latitude), lng: parseFloat(element.longitude) },
             destination: { lat: parseFloat(this.direction[index + 1].latitude), lng: parseFloat(this.direction[index + 1].longitude) }
           }
-          this.getDistance(getDistancePayload);
+          this.calculateDistance(getDistancePayload);
         }
       });
       this.isAllUser = false;
@@ -150,9 +158,10 @@ export class EmployeeTrackingComponent implements OnInit {
   async onEmployeeLocationsTrack() {
     this.locationService.getEmployeeTravelLocation(this.userId).subscribe((response: any) => {
       let data = response.data;
+      this.dir = null;
+      this.direction = [];
+      this.siteMarkers = [];
       if (data.length > 0) {
-        this.direction = [];
-        this.siteMarkers = [];
         this.getDirection(data);
       }
     });
