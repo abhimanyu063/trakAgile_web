@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
 import { UserService } from 'src/app/services/user.services';
 
 @Component({
@@ -8,16 +9,19 @@ import { UserService } from 'src/app/services/user.services';
 })
 export class EmployeeHierarchyComponent implements OnInit {
   nodes:any=[];
-  constructor(private userService:UserService)
+  supervisorId : Number = 0; 
+  constructor(private userService:UserService, private sharedService: SharedService)
   {
 
   }
   ngOnInit(): void {
+    this.supervisorId = this.sharedService.getUserId();
     this.onGetUserHierarchy();
   }
   async onGetUserHierarchy()
   {
-    this.userService.getUserHierarchy().subscribe((response:any)=>{
+    console.log(this.supervisorId);
+    this.userService.getUserHierarchy(this.supervisorId).subscribe((response:any)=>{
       this.nodes=response.data;
       console.log(this.nodes);
     });
