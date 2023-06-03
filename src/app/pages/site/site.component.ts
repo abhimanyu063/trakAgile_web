@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from 'src/app/components/popup/popup.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-site',
@@ -27,15 +28,18 @@ export class SiteComponent implements OnInit {
   tableSizes: any = [5, 10, 15, 20];
   count: number = 0;
   image: any;
+  supervisorId: Number = 0;
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  constructor(private SiteService: SiteService, private headerService: HeaderService, private datePipe: DatePipe, private sanitizer: DomSanitizer, public dialogRef: MatDialog, private matsnack: MatSnackBar) {
+  constructor(private SiteService: SiteService,private sharedService: SharedService, private headerService: HeaderService, private datePipe: DatePipe, private sanitizer: DomSanitizer, public dialogRef: MatDialog, private matsnack: MatSnackBar) {
 
   }
   ngOnInit(): void {
     this.headerService.setHeaderVisibility(true);
     this.fromDate.setDate(this.fromDate.getDate() - 10);
     this.toDate.setDate(this.toDate.getDate() - 10);
+    this.supervisorId = this.sharedService.getUserId();
     this.getSites();
   }
   openDialog(siteWorkId: number) {
@@ -61,7 +65,7 @@ export class SiteComponent implements OnInit {
       var yyyy = today.getFullYear();
 
       var todayDate = `${yyyy}-${mm}-${dd}`;
-      this.SiteService.getAllSites('2023-05-01', todayDate, 0).subscribe((response: any) => {
+      this.SiteService.getAllSites('2023-05-01', todayDate, 0, this.supervisorId).subscribe((response: any) => {
         this.sites = response.data;
       });
     }
@@ -88,7 +92,7 @@ export class SiteComponent implements OnInit {
   }
   onRefreshRequests() {
     try {
-      this.SiteService.getAllSites(this.fromDate, this.toDate, 0).subscribe((response: any) => {
+      this.SiteService.getAllSites(this.fromDate, this.toDate, 0, this.supervisorId).subscribe((response: any) => {
         this.sites = response.data;
       });
     }
@@ -112,7 +116,7 @@ export class SiteComponent implements OnInit {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
-        this.SiteService.getAllSites(weeklyDate, todayDate, 0).subscribe((response: any) => {
+        this.SiteService.getAllSites(weeklyDate, todayDate, 0, this.supervisorId).subscribe((response: any) => {
           this.sites = response.data;
         });
       }
@@ -127,7 +131,7 @@ export class SiteComponent implements OnInit {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         var monthlyDate = `${yyyy}-${mm}-${dd}`;
-        this.SiteService.getAllSites(monthlyDate, todayDate, 0).subscribe((response: any) => {
+        this.SiteService.getAllSites(monthlyDate, todayDate, 0, this.supervisorId).subscribe((response: any) => {
           this.sites = response.data;
         });
       }
@@ -152,7 +156,7 @@ export class SiteComponent implements OnInit {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
-        this.SiteService.getAllSites('2023-05-01', todayDate, 1).subscribe((response: any) => {
+        this.SiteService.getAllSites('2023-05-01', todayDate, 1, this.supervisorId).subscribe((response: any) => {
           this.sites = response.data;
         });
       }
@@ -167,7 +171,7 @@ export class SiteComponent implements OnInit {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         var monthlyDate = `${yyyy}-${mm}-${dd}`;
-        this.SiteService.getAllSites('2023-05-01', todayDate, 2).subscribe((response: any) => {
+        this.SiteService.getAllSites('2023-05-01', todayDate, 2, this.supervisorId).subscribe((response: any) => {
           this.sites = response.data;
         });
       }

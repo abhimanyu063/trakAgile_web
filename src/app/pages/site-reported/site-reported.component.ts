@@ -3,6 +3,7 @@ import { SiteService } from 'src/app/services/site.services';
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HeaderService } from 'src/app/services/header.services';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-requests',
@@ -18,18 +19,19 @@ export class SiteReportedComponent implements OnInit {
   tableSize: number = 10;
   tableSizes: any = [5, 10, 15, 20];
   count: number = 0;
+  supervisorId : Number = 0;
 
-  constructor(private siteService: SiteService, private datePipe: DatePipe, private headerService: HeaderService) {
+  constructor(private siteService: SiteService, private sharedService: SharedService, private datePipe: DatePipe, private headerService: HeaderService) {
 
   }
   ngOnInit(): void {
     this.headerService.setHeaderVisibility(true);
     this.fromDate.setDate(this.fromDate.getDate() - 10);
+    this.supervisorId = this.sharedService.getUserId();
     this.getAllSiteReportedIsuue();
   }
   getAllSiteReportedIsuue() {
-    console.log('Test');
-    this.siteService.getAllSiteReportedIsuue().subscribe((response: any) => {
+    this.siteService.getAllSiteReportedIsuue(this.supervisorId).subscribe((response: any) => {
       this.requests = response.data;
     });
   }

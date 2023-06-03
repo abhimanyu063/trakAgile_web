@@ -14,13 +14,13 @@ export class SiteService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + "sites/getSitesByUserId/" + userId + "");
     }
-    getAllSites(startDate: any, endDate: any, status: any): any {
+    getAllSites(startDate: any, endDate: any, status: any, supervisorId: any): any {
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.get(AppConfig.apiBaseUrl + `sites/getSites/${startDate}/${endDate}/${status}`);
+        return apiService.get(AppConfig.apiBaseUrl + `sites/getSites/${startDate}/${endDate}/${status}/${supervisorId}`);
     }
-    getAllSiteReportedIsuue(): any {
+    getAllSiteReportedIsuue(supervisorId: any): any {
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.get(AppConfig.apiBaseUrl + `sites/getSiteReportedIsuueDetails`);
+        return apiService.get(AppConfig.apiBaseUrl + `sites/getSiteReportedIsuueDetails/${supervisorId}`);
     }
     getImage(siteWorkId: number): any {
         const apiService = this.injector.get(ApiHttpService);
