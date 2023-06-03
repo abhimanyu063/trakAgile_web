@@ -23,9 +23,9 @@ export class UserService {
         const apiService = this.injector.get(ApiHttpService);
         return apiService.get(AppConfig.apiBaseUrl + `users/getUsers/${userId}`);
     }
-    getOnlineUsers(): any {
+    getOnlineUsers(supervisorId: any): any {
         const apiService = this.injector.get(ApiHttpService);
-        return apiService.get(AppConfig.apiBaseUrl + `users/getOnlineUsers`);
+        return apiService.get(AppConfig.apiBaseUrl + `users/getOnlineUsers/${supervisorId}`);
     }
     getSupervisor(): any {
         const apiService = this.injector.get(ApiHttpService);

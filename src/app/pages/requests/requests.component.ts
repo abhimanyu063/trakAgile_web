@@ -5,6 +5,7 @@ import html2canvas from 'html2canvas';
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HeaderService } from 'src/app/services/header.services';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-requests',
@@ -19,17 +20,20 @@ export class RequestsComponent implements OnInit {
   tableSize: number = 10;
   tableSizes: any = [5, 10, 15, 20];
   count: number = 0;
+  supervisorId : Number = 0;
   
-  constructor(private requestService: RequestService, private datePipe:DatePipe, private headerService:HeaderService) {
+  constructor(private requestService: RequestService, private sharedService: SharedService, private datePipe:DatePipe, private headerService:HeaderService) {
 
   }
   ngOnInit(): void {
     this.headerService.setHeaderVisibility(true);
     this.fromDate.setDate( this.fromDate.getDate() -10 );
+    this.supervisorId = this.sharedService.getUserId();
     this.getRequests();
   }
   getRequests() {
-    this.requestService.getAllRequests(this.datePipe.transform(this.fromDate,'yyyy-MM-dd')?.toString(), this.datePipe.transform(this.toDate,'yyyy-MM-dd')?.toString()).subscribe((response: any) => {
+    console.log(this.supervisorId);
+    this.requestService.getAllRequests(this.datePipe.transform(this.fromDate,'yyyy-MM-dd')?.toString(), this.datePipe.transform(this.toDate,'yyyy-MM-dd')?.toString(), this.supervisorId).subscribe((response: any) => {
       this.requests = response.data;
     });
   }
@@ -66,7 +70,7 @@ export class RequestsComponent implements OnInit {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         var weeklyDate = `${yyyy}-${mm}-${dd}`;
-        this.requestService.getAllRequests(weeklyDate, todayDate).subscribe((response: any) => {
+        this.requestService.getAllRequests(weeklyDate, todayDate, this.supervisorId).subscribe((response: any) => {
           this.requests = response.data;
         });
       }

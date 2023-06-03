@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.services';
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HeaderService } from 'src/app/services/header.services';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-requests',
@@ -15,15 +16,17 @@ export class OnlineUserComponent implements OnInit {
   tableSize: number = 10;
   tableSizes: any = [5, 10, 15, 20];
   count: number = 0;
-  constructor(private userService: UserService, private datePipe:DatePipe, private headerService:HeaderService) {
+  supervisorId: Number = 0; 
+  constructor(private userService: UserService, private sharedService: SharedService, private datePipe:DatePipe, private headerService:HeaderService) {
 
   }
   ngOnInit(): void {
     this.headerService.setHeaderVisibility(true);
+    this.supervisorId = this.sharedService.getUserId();
     this.getOnlineUsers();
   }
   getOnlineUsers() {
-    this.userService.getOnlineUsers().subscribe((response: any) => {
+    this.userService.getOnlineUsers(this.supervisorId).subscribe((response: any) => {
       this.requests = response.data;
       console.log(this.requests)
     });

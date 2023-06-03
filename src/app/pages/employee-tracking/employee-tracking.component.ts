@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from 'src/app/services/location.services';
+import { SharedService } from 'src/app/services/shared.service';
 import { UserService } from 'src/app/services/user.services';
 
 @Component({
@@ -18,6 +19,7 @@ export class EmployeeTrackingComponent implements OnInit {
   isAllUser: boolean = true;
   openedWindow: number = 0;
   distance: number = 0;
+  supervisorId: Number = 0; 
 
   // initial center position for the map
   lat: number = 25.4328287;
@@ -29,16 +31,17 @@ export class EmployeeTrackingComponent implements OnInit {
   originIcon = '../../../assets/images/origin.png';
   liveIcon = '../../../assets/images/live.gif';
 
-  constructor(private locationService: LocationService, private userService: UserService) {
+  constructor(private locationService: LocationService, private sharedService: SharedService, private userService: UserService) {
 
   }
   ngOnInit(): void {
+    this.supervisorId = this.sharedService.getUserId();
     this.getOnlineUsers();
     this.onEmployeeLocationsTrack();
   }
 
   getOnlineUsers() {
-    this.userService.getOnlineUsers().subscribe((response: any) => {
+    this.userService.getOnlineUsers(this.supervisorId).subscribe((response: any) => {
       this.onlineUsers = response.data;
       const distictUsers = [...new Set(this.onlineUsers.map((x: any) => x.name))];
       this.distinctOnlineUsers = distictUsers.sort();
