@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { AppConfig } from 'src/app/appconfig';
 import { ForgetPasswordService } from 'src/app/services/forgetpassword.services';
 
 @Component({
@@ -29,7 +30,7 @@ export class ForgetPasswordComponent {
       this.matsnack.open("Password has been sent to your email " + result.data.email + ".", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
-        duration: 5000
+        duration: AppConfig.alertDuration
       });
       this.userForgetPasswordForm.reset();
     }
@@ -37,7 +38,7 @@ export class ForgetPasswordComponent {
       this.matsnack.open("UserName / email or mobile is required.", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
-        duration: 5000
+        duration: AppConfig.alertDuration
       });
     }
   }

@@ -9,21 +9,17 @@ import { UserService } from 'src/app/services/user.services';
 })
 export class EmployeeHierarchyComponent implements OnInit {
   nodes:any=[];
-  supervisorId : Number = 0; 
-  constructor(private userService:UserService, private sharedService: SharedService)
+  constructor(private userService:UserService)
   {
 
   }
   ngOnInit(): void {
-    this.supervisorId = this.sharedService.getUserId();
     this.onGetUserHierarchy();
   }
   async onGetUserHierarchy()
   {
-    console.log(this.supervisorId);
-    this.userService.getUserHierarchy(this.supervisorId).subscribe((response:any)=>{
+    this.userService.getUserHierarchy().subscribe((response:any)=>{
       this.nodes=response.data;
-      console.log(this.nodes);
     });
   }
 }

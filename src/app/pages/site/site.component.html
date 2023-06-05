@@ -10,7 +10,7 @@
                   <label class="item item-input item-select">
                     <div class="input-label" style="margin-left: 100px;">
                       Status
-                      <select (change)="onChangeStatus($event)">
+                      <select (change)="onChangeStatus($event)" class="form-select">
                         <option value="0">All</option>
                         <option value="1">Completed</option>
                         <option value="2">In-Progress</option>
@@ -24,7 +24,7 @@
                   <label class="item item-input item-select">
                     <div class="input-label" style="margin-left: 120px;">
                       Select
-                      <select (change)="onChange($event)">
+                      <select (change)="onChange($event)" class="form-select">
                         <option value="0">All</option>
                         <option value="1">Weekly</option>
                         <option value="2">Monthly</option>
@@ -75,6 +75,7 @@
                       <th scope="col">Created On</th>
                       <th scope="col">User</th>
                       <th scope="col">Doc.</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Address/Image Co-ordinates</th>
                     </tr>
                   </thead>
@@ -89,7 +90,10 @@
                       <td>{{site.siteTypeDescription}}</td>
                       <td>{{site.createdOn|date:'dd-MM-yyyy'}}</td>
                       <td>{{site.name}}</td>
-                      <td><a *ngIf="site.isWorkCompleted===1" style="cursor: pointer;" (click)="openDialog(site.siteWorkId)" class="row-link">View</a></td>
+                      <td><a *ngIf="site.isWorkCompleted===1" style="cursor: pointer;"
+                          (click)="openDialog(site.siteWorkId)" class="row-link">View</a></td>
+                      <td>{{site.isWorkCompleted?
+                        'Completed':site.isSiteReportedIssue ? 'Issue reported': 'Inprogress'}}</td>
                       <td>{{0 +" KM"}}</td>
                     </tr>
                   </tbody>

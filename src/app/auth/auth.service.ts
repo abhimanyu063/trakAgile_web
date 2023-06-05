@@ -5,6 +5,7 @@ import { User } from './user';
 import { UserService } from '../services/user.services';
 import { SharedService } from 'src/app/services/shared.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { AppConfig } from '../appconfig';
 
 
 @Injectable()
@@ -31,7 +32,7 @@ export class AuthService {
       this.matsnack.open("User Name or Password is invalid", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
-        duration: 5000
+        duration: AppConfig.alertDuration
       });
     }
   }

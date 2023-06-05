@@ -19,7 +19,7 @@ export class EmployeeTrackingComponent implements OnInit {
   isAllUser: boolean = true;
   openedWindow: number = 0;
   distance: number = 0;
-  supervisorId: Number = 0; 
+  supervisorId: Number = 0;
 
   // initial center position for the map
   lat: number = 25.4328287;
@@ -110,19 +110,22 @@ export class EmployeeTrackingComponent implements OnInit {
         origin: { lat: parseFloat(data[0].tripStartLatitude), lng: parseFloat(data[0].tripStartLongitude) },
         destination: { lat: parseFloat(data[data.length - 1].latitude), lng: parseFloat(data[data.length - 1].longitude) }
       }
+
       //inserting lat long for trip started
       this.direction.push({
         origin: { lat: parseFloat(data[0].tripStartLatitude), lng: parseFloat(data[0].tripStartLongitude) },
         destination: { lat: parseFloat(data[0].latitude), lng: parseFloat(data[0].longitude) }
       });
+
       data.forEach((element: any, index: number) => {
         if (index < data.length - 1) {
+          //showing directions
           this.direction.push({
             origin: { lat: parseFloat(element.latitude), lng: parseFloat(element.longitude) },
             destination: { lat: parseFloat(data[index + 1].latitude), lng: parseFloat(data[index + 1].longitude) }
           });
         }
-        //creating markers for sites
+        //creating site markers
         if (element.siteId > 0) {
           this.siteMarkers.push({
             origin: { lat: parseFloat(element.latitude), lng: parseFloat(element.longitude) },
@@ -131,6 +134,7 @@ export class EmployeeTrackingComponent implements OnInit {
           });
         }
       });
+
       // calculating distance
       this.direction.forEach((element: any, index: number) => {
         if (index < this.direction.length - 1) {
@@ -149,8 +153,10 @@ export class EmployeeTrackingComponent implements OnInit {
       const descOrderedData = data.reverse();
       distictUserIds.forEach(element => {
         const loc = descOrderedData.find((x: any) => x.userId == element);
+        const lat = loc.latitude != null ? loc.latitude : loc.tripStartLatitude;
+        const lng = loc.longitude != null ? loc.longitude : loc.tripStartLongitude;
         this.direction.push({
-          origin: { lat: parseFloat(loc.latitude), lng: parseFloat(loc.longitude) },
+          origin: { lat: parseFloat(lat), lng: parseFloat(lng) },
           name: loc.name
         });
       });

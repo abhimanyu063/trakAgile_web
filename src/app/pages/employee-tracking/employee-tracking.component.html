@@ -11,7 +11,7 @@
                   <label class="item item-input item-select">
                     <div class="input-label" style="margin-left: 100px;">
                       User
-                      <select (change)="onChangeUser($event)">
+                      <select (change)="onChangeUser($event)" class="form-select">
                         <option value="0">All</option>
                         <option *ngFor="let user of distinctOnlineUsers" [value]="user">{{user}}</option>
                       </select>

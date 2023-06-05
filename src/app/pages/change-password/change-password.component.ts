@@ -5,6 +5,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { HeaderService } from 'src/app/services/header.services';
 import { ChangePasswordService } from 'src/app/services/changepassword.services';
 import { SharedService } from 'src/app/services/shared.service';
+import { AppConfig } from 'src/app/appconfig';
 
 @Component({
     selector: 'app-change-password',
@@ -44,7 +45,7 @@ export class ChangePasswordComponent implements OnInit {
                         this.matsnack.open("Password has been changed successfully.", 'Dismiss', {
                             horizontalPosition: this.horizontalPosition,
                             verticalPosition: this.verticalPosition,
-                            duration: 5000
+                            duration: AppConfig.alertDuration
                         });
                         this.router.navigate(['/login']);
                     }
@@ -52,7 +53,7 @@ export class ChangePasswordComponent implements OnInit {
                         this.matsnack.open("Old password is incorrect.", 'Dismiss', {
                             horizontalPosition: this.horizontalPosition,
                             verticalPosition: this.verticalPosition,
-                            duration: 5000
+                            duration: AppConfig.alertDuration
                         });
                         this.changePasswordForm.reset();
                     }
@@ -62,7 +63,7 @@ export class ChangePasswordComponent implements OnInit {
                 this.matsnack.open("New password and Confirm password does not match.", 'Dismiss', {
                     horizontalPosition: this.horizontalPosition,
                     verticalPosition: this.verticalPosition,
-                    duration: 5000
+                    duration: AppConfig.alertDuration
                 });
                 this.changePasswordForm.reset();
             }
@@ -71,7 +72,7 @@ export class ChangePasswordComponent implements OnInit {
             this.matsnack.open("All fields are mandatory.", 'Dismiss', {
                 horizontalPosition: this.horizontalPosition,
                 verticalPosition: this.verticalPosition,
-                duration: 5000
+                duration: AppConfig.alertDuration
             });
             this.changePasswordForm.reset();
         }

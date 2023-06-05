@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { AppConfig } from 'src/app/appconfig';
 import { HeaderService } from 'src/app/services/header.services';
 import { UserService } from 'src/app/services/user.services';
 
@@ -50,7 +51,7 @@ export class EmployeeRegistrationComponent implements OnInit {
         this.matsnack.open("User registered successfully.", 'Dismiss', {
           horizontalPosition: this.horizontalPosition,
           verticalPosition: this.verticalPosition,
-          duration: 5000
+          duration: AppConfig.alertDuration
         });
         this.clearForm();
         this.getSupervisor();
@@ -60,7 +61,7 @@ export class EmployeeRegistrationComponent implements OnInit {
           this.matsnack.open("This user name " + validateUserNameEmail.data.userName + " is already registered, Please try another user name.", 'Dismiss', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
-            duration: 5000
+            duration: AppConfig.alertDuration
           });
           this.userForm.get('userName')?.reset();
         }
@@ -68,7 +69,7 @@ export class EmployeeRegistrationComponent implements OnInit {
           this.matsnack.open("This email " + validateUserNameEmail.data.email + " is already registered, Please try another email.", 'Dismiss', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
-            duration: 5000
+            duration: AppConfig.alertDuration
           });
           this.userForm.get('email')?.reset();
         }
@@ -76,7 +77,7 @@ export class EmployeeRegistrationComponent implements OnInit {
           this.matsnack.open("This mobile number " + validateUserNameEmail.data.mobile + " is already registered, Please try another mobile number.", 'Dismiss', {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
-            duration: 5000
+            duration: AppConfig.alertDuration
           });
           this.userForm.get('mobile')?.reset();
         }
@@ -86,7 +87,7 @@ export class EmployeeRegistrationComponent implements OnInit {
       this.matsnack.open("All fields are mandatory.", 'Dismiss', {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
-        duration: 5000
+        duration: AppConfig.alertDuration
       });
     }
   }
