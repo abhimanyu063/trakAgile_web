@@ -13,7 +13,7 @@
                       User
                       <select (change)="onChangeUser($event)" class="form-select">
                         <option value="0">All</option>
-                        <option *ngFor="let user of distinctOnlineUsers" [value]="user">{{user}}</option>
+                        <option *ngFor="let user of users" [value]="user.userId">{{user.name}}</option>
                       </select>
                     </div>
                   </label>

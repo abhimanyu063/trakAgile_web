@@ -9,8 +9,7 @@ import { UserService } from 'src/app/services/user.services';
   styleUrls: ['./employee-tracking.component.scss']
 })
 export class EmployeeTrackingComponent implements OnInit {
-  onlineUsers: any = [];
-  distinctOnlineUsers: any = [];
+  users: any = [];
   dir: any;
   zoom: number = 10;
   direction: any = [];
@@ -36,26 +35,18 @@ export class EmployeeTrackingComponent implements OnInit {
   }
   ngOnInit(): void {
     this.supervisorId = this.sharedService.getUserId();
-    this.getOnlineUsers();
+    this.getTrackingUsers();
     this.onEmployeeLocationsTrack();
   }
 
-  getOnlineUsers() {
-    this.userService.getOnlineUsers(this.supervisorId).subscribe((response: any) => {
-      this.onlineUsers = response.data;
-      const distictUsers = [...new Set(this.onlineUsers.map((x: any) => x.name))];
-      this.distinctOnlineUsers = distictUsers.sort();
+  getTrackingUsers() {
+    this.userService.getTrackingUsers().subscribe((response: any) => {
+      this.users = response.data.sort();
     });
   }
 
   onChangeUser(event: any) {
-    const selectedval = event.target.value;
-    if (selectedval != "0") {
-      this.userId = this.onlineUsers.find((x: any) => x.name == selectedval).userId;
-    }
-    else {
-      this.userId = 0;
-    }
+    this.userId = event.target.value;
     this.onEmployeeLocationsTrack();
   }
 
